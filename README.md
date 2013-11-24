@@ -13,3 +13,9 @@ Liens vers les présentations soutenues lors de la [Giroll Party d'automne 2013]
 * Par: Sébastien Moratinos ([@sebMoratinos](https://twitter.com/SebMoratinos)) ;
 * URL: [https://gitorious.org/smoratinos_talks/smoratinos_talks](https://gitorious.org/smoratinos_talks/smoratinos_talks) ;
 * Licence: ?.
+
+### DigiKam & Darktable : workflow photo avec des logiciels libres
+
+* Par Thomas Le Floc'H ([@ThomasLeFlocH](https://twitter.com/ThomasLeFlocH)) ;
+* URL: [http://slid.es/thomaslefloch/digikam-darktable-giroll-party-2013-11-23](http://slid.es/thomaslefloch/digikam-darktable-giroll-party-2013-11-23) ;
+* Licence: CC-BY-SA
