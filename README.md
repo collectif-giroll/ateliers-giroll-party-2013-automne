@@ -19,3 +19,9 @@ Liens vers les présentations soutenues lors de la [Giroll Party d'automne 2013]
 * Par Thomas Le Floc'H ([@ThomasLeFlocH](https://twitter.com/ThomasLeFlocH)) ;
 * URL: [http://slid.es/thomaslefloch/digikam-darktable-giroll-party-2013-11-23](http://slid.es/thomaslefloch/digikam-darktable-giroll-party-2013-11-23) ;
 * Licence: CC-BY-SA
+
+### Libérer son Android : un aperçu du développement de Replicant
+
+* **par :** _Paul Kocialkowski_ ([paulk@replicant.us](mailto:paulk@replicant.us)) ;
+* **URL :** [./Libérer-son-Android:-un-aperçu-du-développement-de-Replicant](Libérer-son-Android:-un-aperçu-du-développement-de-Replicant) ;
+* **licence :** ?.
