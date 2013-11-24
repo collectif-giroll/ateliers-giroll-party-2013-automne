@@ -4,21 +4,21 @@ Liens vers les présentations soutenues lors de la [Giroll Party d'automne 2013]
 
 ### Développer ses super pouvoirs pour développer avec Django
 
-* Par: [Mathieu Commandon](https://github.com/strycore/dotfiles) [@strycore](https://twitter.com/strycore) ;
-* URL: [http://slid.es/mathieucomandon/cultiver-ses-super-pouvoirs](http://slid.es/mathieucomandon/cultiver-ses-super-pouvoirs) ;
-* Licence: ?.
+* **par :** _Mathieu Commandon_ [@strycore](https://twitter.com/strycore) ;
+* **URL :** [http://slid.es/mathieucomandon/cultiver-ses-super-pouvoirs](http://slid.es/mathieucomandon/cultiver-ses-super-pouvoirs) ;
+* **licence :** ?.
 
 ### GNU's framework for Peer-to-Peer Networking
 
-* Par: Sébastien Moratinos ([@sebMoratinos](https://twitter.com/SebMoratinos)) ;
-* URL: [https://gitorious.org/smoratinos_talks/smoratinos_talks](https://gitorious.org/smoratinos_talks/smoratinos_talks) ;
-* Licence: ?.
+* **par :** _Sébastien Moratinos_ ([@sebMoratinos](https://twitter.com/SebMoratinos)) ;
+* **URL :** [https://gitorious.org/smoratinos_talks/smoratinos_talks](https://gitorious.org/smoratinos_talks/smoratinos_talks) ;
+* **licence :** ?.
 
 ### DigiKam & Darktable : workflow photo avec des logiciels libres
 
-* Par Thomas Le Floc'H ([@ThomasLeFlocH](https://twitter.com/ThomasLeFlocH)) ;
-* URL: [http://slid.es/thomaslefloch/digikam-darktable-giroll-party-2013-11-23](http://slid.es/thomaslefloch/digikam-darktable-giroll-party-2013-11-23) ;
-* Licence: CC-BY-SA
+* **par :** _Thomas Le Floc'H_ ([@ThomasLeFlocH](https://twitter.com/ThomasLeFlocH)) ;
+* **URL :** [http://slid.es/thomaslefloch/digikam-darktable-giroll-party-2013-11-23](http://slid.es/thomaslefloch/digikam-darktable-giroll-party-2013-11-23) ;
+* **licence :** CC-BY-SA.
 
 ### Libérer son Android : un aperçu du développement de Replicant
 
