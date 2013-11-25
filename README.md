@@ -2,11 +2,11 @@
 
 Liens vers les présentations soutenues lors de la [Giroll Party d'automne 2013](http://www.giroll.org/post/2013/09/24/Giroll-Install-Party-Automne-2013-Samedi-23-Novembre) à Bordeaux.
 
-### Développer ses super pouvoirs pour développer avec Django
+### Cultiver ses super pouvoirs pour développer avec Django
 
-* **par :** _Mathieu Commandon_ [@strycore](https://twitter.com/strycore) ;
-* **URL :** [http://slid.es/mathieucomandon/cultiver-ses-super-pouvoirs](http://slid.es/mathieucomandon/cultiver-ses-super-pouvoirs) ;
-* **licence :** ?.
+* **par :** _Mathieu Comandon_ [@strycore](https://twitter.com/strycore)
+* **URL :** [http://slid.es/mathieucomandon/cultiver-ses-super-pouvoirs](http://slid.es/mathieucomandon/cultiver-ses-super-pouvoirs)
+* **licence :** WTFPL
 
 ### GNU's framework for Peer-to-Peer Networking
 
