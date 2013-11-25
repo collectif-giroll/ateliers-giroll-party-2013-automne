@@ -23,6 +23,6 @@ Liens vers les présentations soutenues lors de la [Giroll Party d'automne 2013]
 ### Libérer son Android : un aperçu du développement de Replicant
 
 * **par :** _Paul Kocialkowski_ ([paulk@replicant.us](mailto:paulk@replicant.us)) ;
-* **PDF :** [./Libérer-son-Android:-un-aperçu-du-développement-de-Replicant](blob/master/Lib%C3%A9rer-son-Android:-un-aper%C3%A7u-du-d%C3%A9veloppement-de-Replicant?raw=true) ;
+* **PDF :** [./Libérer-son-Android:-un-aperçu-du-développement-de-Replicant](Lib%C3%A9rer-son-Android:-un-aper%C3%A7u-du-d%C3%A9veloppement-de-Replicant?raw=true) ;
 * **licence :** ?.
 
