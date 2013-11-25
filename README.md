@@ -4,7 +4,7 @@ Liens vers les présentations soutenues lors de la [Giroll Party d'automne 2013]
 
 ### Cultiver ses super pouvoirs pour développer avec Django
 
-* **par :** _Mathieu Commandon_ [@strycore](https://twitter.com/strycore)
+* **par :** _Mathieu Comandon_ [@strycore](https://twitter.com/strycore)
 * **URL :** [http://slid.es/mathieucomandon/cultiver-ses-super-pouvoirs](http://slid.es/mathieucomandon/cultiver-ses-super-pouvoirs)
 * **licence :** WTFPL
 
