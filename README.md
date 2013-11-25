@@ -24,5 +24,5 @@ Liens vers les présentations soutenues lors de la [Giroll Party d'automne 2013]
 
 * **par :** _Paul Kocialkowski_ ([paulk@replicant.us](mailto:paulk@replicant.us)) ;
 * **PDF :** [./Libérer-son-Android:-un-aperçu-du-développement-de-Replicant.pdf](./Lib%C3%A9rer-son-Android:-un-aper%C3%A7u-du-d%C3%A9veloppement-de-Replicant.pdf?raw=true) ;
-* **licence :** ?.
+* **licence :** CC-BY-SA.
 
