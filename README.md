@@ -26,3 +26,10 @@ Liens vers les présentations soutenues lors de la [Giroll Party d'automne 2013]
 * **PDF :** [./Libérer-son-Android:-un-aperçu-du-développement-de-Replicant.Paulk.pdf](./Lib%C3%A9rer-son-Android:-un-aper%C3%A7u-du-d%C3%A9veloppement-de-Replicant.Paulk.pdf?raw=true) ;
 * **licence :** CC-BY-SA.
 
+###Comment (et pourquoi) libérer votre ordinateur ?
+
+* **par :** _Denis Carikli_ alias _[GNUtoo](mailto:gnutoo+github@no-log.org)_ ;
+* **PDF :** [./Comment-(et-pourquoi)-libérer-votre-ordinateur.GNUtoo.pdf](./Comment-(et-pourquoi)-libérer-votre-ordinateur.GNUtoo.pdf?raw=true) ;
+* **ODP (source) :** [https://git.gitorious.org/gnutoo_projects/free_software_presentations.git](https://gitorious.org/gnutoo_projects/free_software_presentations/raw/23b94d78a820a91f55dd90400f5464153b2f6cbc:23-Nov-2013-Giroll-Fr/Giroll.odp)
+* **licence :** CC-BY-SA.
+
