@@ -4,25 +4,25 @@ Liens vers les présentations soutenues lors de la [Giroll Party d'automne 2013]
 
 ### Cultiver ses super pouvoirs pour développer avec Django
 
-* **par :** _Mathieu Comandon_ [@strycore](https://twitter.com/strycore)
+* **par :** _Mathieu Comandon_ alias _[@strycore](https://twitter.com/strycore)_ ;
 * **URL :** [http://slid.es/mathieucomandon/cultiver-ses-super-pouvoirs](http://slid.es/mathieucomandon/cultiver-ses-super-pouvoirs)
 * **licence :** WTFPL
 
 ### GNU's framework for Peer-to-Peer Networking
 
-* **par :** _Sébastien Moratinos_ ([@sebMoratinos](https://twitter.com/SebMoratinos)) ;
+* **par :** _Sébastien Moratinos_ alias _[@sebMoratinos](https://twitter.com/SebMoratinos)_ ;
 * **URL :** [https://gitorious.org/smoratinos_talks/smoratinos_talks](https://gitorious.org/smoratinos_talks/smoratinos_talks) ;
 * **licence :** CC-BY-SA.
 
 ### DigiKam & Darktable : workflow photo avec des logiciels libres
 
-* **par :** _Thomas Le Floc'H_ ([@ThomasLeFlocH](https://twitter.com/ThomasLeFlocH)) ;
+* **par :** _Thomas Le Floc'H_ alias _[@ThomasLeFlocH](https://twitter.com/ThomasLeFlocH)_ ;
 * **URL :** [http://slid.es/thomaslefloch/digikam-darktable-giroll-party-2013-11-23](http://slid.es/thomaslefloch/digikam-darktable-giroll-party-2013-11-23) ;
 * **licence :** CC-BY-SA.
 
 ### Libérer son Android : un aperçu du développement de Replicant
 
-* **par :** _Paul Kocialkowski_ ([paulk@replicant.us](mailto:paulk@replicant.us)) ;
+* **par :** _Paul Kocialkowski_ alias _[Paulk](mailto:paulk+github@replicant.us)_ ;
 * **PDF :** [./Libérer-son-Android:-un-aperçu-du-développement-de-Replicant.Paulk.pdf](./Lib%C3%A9rer-son-Android:-un-aper%C3%A7u-du-d%C3%A9veloppement-de-Replicant.Paulk.pdf?raw=true) ;
 * **licence :** CC-BY-SA.
 
