@@ -36,5 +36,5 @@ Liens vers les présentations soutenues lors de la [Giroll Party d'automne 2013]
 ### Protéger sa vie privée avec le chiffrement
 * **par :** _Grégory Roche_ alias _[Polymorphisme](http://www.polymorphisme.org)_ ;
 * **URL :** [http://www.polymorphisme.org/cryptographie/protegerViePrivee.html](http://www.polymorphisme.org/cryptographie/protegerViePrivee.html) ;
-* **ZIP :** [./Protéger-sa-vie-privée-avec-le-chiffrement/presentation-proteger-Vie-Privee.html](./Protéger-sa-vie-privée-avec-le-chiffrement/presentation-proteger-Vie-Privee.html) ;
+* **ZIP :** [./Protéger-sa-vie-privée-avec-le-chiffrement.zip](./Protéger-sa-vie-privée-avec-le-chiffrement.zip) ;
 * **licence :** CC-BY-SA.
