@@ -33,3 +33,8 @@ Liens vers les présentations soutenues lors de la [Giroll Party d'automne 2013]
 * **ODP (source) :** [https://git.gitorious.org/gnutoo_projects/free_software_presentations.git](https://gitorious.org/gnutoo_projects/free_software_presentations/raw/23b94d78a820a91f55dd90400f5464153b2f6cbc:23-Nov-2013-Giroll-Fr/Giroll.odp)
 * **licence :** CC-BY-SA.
 
+### Protéger sa vie privée avec le chiffrement
+* **par :** _Grégory Roche_ alias _[Polymorphisme](http://www.polymorphisme.org)_ ;
+* **URL :** [http://www.polymorphisme.org/cryptographie/protegerViePrivee.html](http://www.polymorphisme.org/cryptographie/protegerViePrivee.html) ;
+* **ZIP :** [./Protéger-sa-vie-privée-avec-le-chiffrement/presentation-proteger-Vie-Privee.html](./Protéger-sa-vie-privée-avec-le-chiffrement/presentation-proteger-Vie-Privee.html) ;
+* **licence :** CC-BY-SA.

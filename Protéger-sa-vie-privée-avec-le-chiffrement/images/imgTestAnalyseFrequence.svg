@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"  standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" 
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg onload="if (typeof(gnuplot_svg)!='undefined') gnuplot_svg.Init(evt)" 
+ width="880" height="480" 
+ viewBox="0 0 880 480"
+ xmlns="http://www.w3.org/2000/svg"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+
+
+<style type="text/css"><![CDATA[
+
+.svg-title { stroke:none; fill:black; font-family:bold; font-size:15.00pt; text-anchor:middle }
+.svg-legend-middle { stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:middle }
+.svg-legend-end { stroke:none; fill:black; font-family:Arial; font-size:12.00pt; text-anchor:end }
+.svg-grid { fill:none; color:gray; stroke:currentColor; stroke-width:1.00; stroke-linecap:butt; stroke-linejoin:miter }
+.svg-courbe { fill:none; stroke:currentColor; stroke-width:1.00; stroke-linecap:butt; stroke-linejoin:miter }
+.svg-tics { stroke:rgb(170, 170, 170) } 
+.svg-xtics { stroke:none; fill:rgb(87,87,87); font-family:Arial; font-size:12.00pt; text-anchor:middle }
+.svg-ytics { stroke:none; fill:rgb(87,87,87); font-family:Arial; font-size:12.00pt; text-anchor:end }
+
+#gnuplot_plot_1 { color:#FF0000 } 
+#gnuplot_plot_2 { color:#00FF00 } 
+#gnuplot_plot_3 { color:#0000FF } 
+#gnuplot_plot_4 { color:#FF00FF } 
+#gnuplot_plot_5 { color:#00FFFF } 
+#gnuplot_plot_6 { color:#FF9900 } 
+
+.svg-stroke-dasharray-1 { stroke-dasharray:20,5 }
+.svg-stroke-dasharray-2 { stroke-dasharray:15,5 }
+.svg-stroke-dasharray-3 { stroke-dasharray:10,5 }
+.svg-stroke-dasharray-4 { stroke-dasharray:20,5, 2.5,5 }
+.svg-stroke-dasharray-5 { stroke-dasharray:15,5, 2.5,5 }
+.svg-stroke-dasharray-6 { stroke-dasharray:10,5, 2.5,5 }
+.svg-stroke-dasharray-7 { stroke-dasharray:20,5, 2.5,5, 2.5,5 }
+.svg-stroke-dasharray-8 { stroke-dasharray:15,5, 2.5,5, 2.5,5 }
+.svg-stroke-dasharray-9 { stroke-dasharray:10,5, 2.5,5, 2.5,5 }
+
+.svg-gridline { stroke-dasharray:1.5,5, 1.5,5 }
+
+]]></style>
+
+
+<title>Test d'analyse de fréquence</title>
+
+<script type="text/javascript" xlink:href="/usr/share/gnuplot/gnuplot/4.6/js/gnuplot_svg.js"/>
+
+<!-- Tie mousing to entire bounding box of the plot -->
+<rect x="0" y="0" width="880" height="480" fill="#ffffff" stroke="black" stroke-width="0"
+onclick="gnuplot_svg.toggleCoordBox(evt)"  onmousemove="gnuplot_svg.moveCoordBox(evt)"/>
+
+<!-- Also track mouse when it is on a plot element -->
+<g id="gnuplot_canvas" onclick="gnuplot_svg.toggleCoordBox(evt)" onmousemove="gnuplot_svg.moveCoordBox(evt)">
+
+<defs>
+
+	<circle id='gpDot' r='0.5' stroke-width='0.5'/>
+	<path id='gpPt0' stroke-width='0.222' stroke='currentColor' d='M-1,0 h2 M0,-1 v2'/>
+	<path id='gpPt1' stroke-width='0.222' stroke='currentColor' d='M-1,-1 L1,1 M1,-1 L-1,1'/>
+	<path id='gpPt2' stroke-width='0.222' stroke='currentColor' d='M-1,0 L1,0 M0,-1 L0,1 M-1,-1 L1,1 M-1,1 L1,-1'/>
+	<rect id='gpPt3' stroke-width='0.222' stroke='currentColor' x='-1' y='-1' width='2' height='2'/>
+	<rect id='gpPt4' stroke-width='0.222' stroke='currentColor' fill='currentColor' x='-1' y='-1' width='2' height='2'/>
+	<circle id='gpPt5' stroke-width='0.222' stroke='currentColor' cx='0' cy='0' r='1'/>
+	<use xlink:href='#gpPt5' id='gpPt6' fill='currentColor' stroke='none'/>
+	<path id='gpPt7' stroke-width='0.222' stroke='currentColor' d='M0,-1.33 L-1.33,0.67 L1.33,0.67 z'/>
+	<use xlink:href='#gpPt7' id='gpPt8' fill='currentColor' stroke='none'/>
+	<use xlink:href='#gpPt7' id='gpPt9' stroke='currentColor' transform='rotate(180)'/>
+	<use xlink:href='#gpPt9' id='gpPt10' fill='currentColor' stroke='none'/>
+	<use xlink:href='#gpPt3' id='gpPt11' stroke='currentColor' transform='rotate(45)'/>
+	<use xlink:href='#gpPt11' id='gpPt12' fill='currentColor' stroke='none'/>
+</defs>
+
+<g class="svg-grid"><path class="svg-gridline"  d='M63.6,422.4 L855.0,422.4  h0.01'/></g>
+<g><path class="svg-tics" d='M63.6,422.4 L72.6,422.4 M855.0,422.4 h0.01'/>	
+<g transform="translate(55.3,426.9)" class="svg-ytics"><text><tspan> 0</tspan></text></g></g>
+
+<g class="svg-grid"><path class="svg-gridline"  d='M63.6,381.5 L855.0,381.5  h0.01'/></g>
+<g><path class="svg-tics" d='M63.6,381.5 L72.6,381.5 M855.0,381.5 h0.01'/>	
+<g transform="translate(55.3,386.0)" class="svg-ytics"><text><tspan> 2</tspan></text></g></g>
+
+<g class="svg-grid"><path class="svg-gridline"  d='M63.6,340.6 L855.0,340.6  h0.01'/></g>
+<g ><path class="svg-tics" d='M63.6,340.6 L72.6,340.6 M855.0,340.6 h0.01'/>	
+<g transform="translate(55.3,345.1)" class="svg-ytics"><text><tspan> 4</tspan></text></g></g>
+
+<g class="svg-grid"><path class="svg-gridline"  d='M63.6,299.6 L855.0,299.6  h0.01'/></g>
+<g ><path class="svg-tics" d='M63.6,299.6 L72.6,299.6 M855.0,299.6 h0.01'/>	
+<g transform="translate(55.3,304.1)" class="svg-ytics"><text><tspan> 6</tspan></text></g></g>
+
+<g class="svg-grid"><path class="svg-gridline"  d='M63.6,258.7 L855.0,258.7  h0.01'/></g>
+<g ><path class="svg-tics" d='M63.6,258.7 L72.6,258.7 M855.0,258.7 h0.01'/>	
+<g transform="translate(55.3,263.2)" class="svg-ytics"><text><tspan> 8</tspan></text></g></g>
+
+<g class="svg-grid"><path class="svg-gridline"  d='M63.6,217.8 L855.0,217.8  h0.01'/></g>
+<g ><path class="svg-tics" d='M63.6,217.8 L72.6,217.8 M855.0,217.8 h0.01'/>	
+<g transform="translate(55.3,222.3)" class="svg-ytics"><text><tspan> 10</tspan></text></g></g>
+
+<g class="svg-grid"><path class="svg-gridline"  d='M63.6,176.9 L855.0,176.9  h0.01'/></g>
+<g ><path class="svg-tics" d='M63.6,176.9 L72.6,176.9 M855.0,176.9 h0.01'/>	
+<g transform="translate(55.3,181.4)" class="svg-ytics"><text><tspan> 12</tspan></text></g></g>
+
+<g class="svg-grid"><path class="svg-gridline"  d='M63.6,135.9 L855.0,135.9  h0.01'/></g>
+<g ><path class="svg-tics" d='M63.6,135.9 L72.6,135.9 M855.0,135.9 h0.01'/>	
+<g transform="translate(55.3,140.4)" class="svg-ytics"><text><tspan> 14</tspan></text></g></g>
+
+<g class="svg-grid"><path class="svg-gridline" d='M63.6,95.0 L579.4,95.0 M829.1,95.0 L855.0,95.0  h0.01'/></g>
+<g ><path class="svg-tics" d='M63.6,95.0 L72.6,95.0 M855.0,95.0 h0.01'/>	
+<g transform="translate(55.3,99.5)" class="svg-ytics"><text><tspan> 16</tspan></text></g></g>
+
+<g class="svg-grid"><path class="svg-gridline" d='M63.6,54.1 L855.0,54.1  h0.01'/></g>
+<g style="fill:none; color:green; stroke:currentColor; stroke-width:1.50; stroke-linecap:butt; stroke-linejoin:miter">
+<path class="svg-tics" d='M63.6,54.1 L72.6,54.1 M855.0,54.1 h0.01'/>	
+<g transform="translate(55.3,58.6)" class="svg-ytics"><text><tspan> 18</tspan></text></g>
+
+<g transform="translate(82.6,444.9)" class="svg-xtics"><text><tspan>A</tspan></text></g>
+<g transform="translate(112.6,444.9)" class="svg-xtics"><text><tspan>B</tspan></text></g>
+<g transform="translate(142.6,444.9)" class="svg-xtics"><text><tspan>C</tspan></text></g>
+<g transform="translate(172.7,444.9)" class="svg-xtics"><text><tspan>D</tspan></text></g>
+<g transform="translate(202.7,444.9)" class="svg-xtics"><text><tspan>E</tspan></text></g>
+<g transform="translate(232.7,444.9)" class="svg-xtics"><text><tspan>F</tspan></text></g>
+<g transform="translate(262.7,444.9)" class="svg-xtics"><text><tspan>G</tspan></text></g>
+<g transform="translate(292.7,444.9)" class="svg-xtics"><text><tspan>H</tspan></text></g>
+<g transform="translate(322.8,444.9)" class="svg-xtics"><text><tspan>I</tspan></text></g>
+<g transform="translate(352.8,444.9)" class="svg-xtics"><text><tspan>J</tspan></text></g>
+<g transform="translate(382.8,444.9)" class="svg-xtics"><text><tspan>K</tspan></text></g>
+<g transform="translate(412.8,444.9)" class="svg-xtics"><text><tspan>L</tspan></text></g>
+<g transform="translate(442.8,444.9)" class="svg-xtics"><text><tspan>M</tspan></text></g>
+<g transform="translate(472.9,444.9)" class="svg-xtics"><text><tspan>N</tspan></text></g>
+<g transform="translate(502.9,444.9)" class="svg-xtics"><text><tspan>O</tspan></text></g>
+<g transform="translate(532.9,444.9)" class="svg-xtics"><text><tspan>P</tspan></text></g>
+<g transform="translate(562.9,444.9)" class="svg-xtics"><text><tspan>Q</tspan></text></g>
+<g transform="translate(592.9,444.9)" class="svg-xtics"><text><tspan>R</tspan></text></g>
+<g transform="translate(623.0,444.9)" class="svg-xtics"><text><tspan>S</tspan></text></g>
+<g transform="translate(653.0,444.9)" class="svg-xtics"><text><tspan>T</tspan></text></g>
+<g transform="translate(683.0,444.9)" class="svg-xtics"><text><tspan>U</tspan></text></g>
+<g transform="translate(713.0,444.9)" class="svg-xtics"><text><tspan>V</tspan></text></g>
+<g transform="translate(743.0,444.9)" class="svg-xtics"><text><tspan>W</tspan></text></g>
+<g transform="translate(773.1,444.9)" class="svg-xtics"><text><tspan>X</tspan></text></g>
+<g transform="translate(803.1,444.9)" class="svg-xtics"><text><tspan>Y</tspan></text></g>
+<g transform="translate(833.1,444.9)" class="svg-xtics"><text><tspan>Z</tspan></text></g>
+
+<path class="svg-tics" d='M63.6,54.1 L63.6,422.4 L855.0,422.4 M855.0,54.1 M63.6,54.1  h0.01'/>
+<g transform="translate(17.6,238.3) rotate(270)" class="svg-legend-middle"><text><tspan>Fréquence (%)</tspan></text></g></g>
+
+
+<g style="fill:none; color:black; stroke:currentColor; stroke-width:1.50; stroke-linecap:butt; stroke-linejoin:miter">
+	<g transform="translate(459.3,471.9)" class="svg-legend-middle"><text><tspan>Lettre de l'alphabet</tspan></text></g>
+	<g transform="translate(459.3,31.6)"  class="svg-title"><text><tspan>Analyse de fréquence</tspan></text></g>
+</g>
+
+
+	<g id="gnuplot_plot_1" ><title>gnuplot_plot_1</title>
+        <g class="svg-courbe">
+	<g visibility="visible" onclick="gnuplot_svg.toggleVisibility(evt,'gnuplot_plot_1')">
+	<g transform="translate(770.3,90.3)" class="svg-legend-end">
+		<text><tspan>Fréquence moyenne</tspan></text>
+	</g>
+	<g style='stroke:none; shape-rendering:crispEdges'>
+		<polygon fill = 'rgb( 15,  86, 232)' fill-opacity = '0.500000' points = '778.6,91.4 820.8,91.4 820.8,80.2 778.6,80.2 '/>
+	</g>
+	</g>
+	<g style = 'stroke:none; shape-rendering:crispEdges'>
+		<polygon fill = 'rgb( 15,  86, 232)' fill-opacity = '0.500000' points = '73.0,422.4 84.3,422.4 84.3,250.4 73.0,250.4 '/>
+		<polygon fill = 'rgb( 15,  86, 232)' fill-opacity = '0.500000' points = '103.0,422.4 114.4,422.4 114.4,399.8 103.0,399.8 '/>
+		<polygon fill = 'rgb( 15,  86, 232)' fill-opacity = '0.500000' points = '133.0,422.4 144.4,422.4 144.4,360.9 133.0,360.9 '/>
+		<polygon fill = 'rgb( 15,  86, 232)' fill-opacity = '0.500000' points = '163.0,422.4 174.4,422.4 174.4,336.4 163.0,336.4 '/>
+		<polygon fill = 'rgb( 15,  86, 232)' fill-opacity = '0.500000' points = '193.1,422.4 204.4,422.4 204.4,68.3 193.1,68.3 '/>
+		<polygon fill = 'rgb( 15,  86, 232)' fill-opacity = '0.500000' points = '223.1,422.4 234.4,422.4 234.4,399.8 223.1,399.8 '/>
+		<polygon fill = 'rgb( 15,  86, 232)' fill-opacity = '0.500000' points = '253.1,422.4 264.5,422.4 264.5,395.7 253.1,395.7 '/>
+		<polygon fill = 'rgb( 15,  86, 232)' fill-opacity = '0.500000' points = '283.1,422.4 294.5,422.4 294.5,403.9 283.1,403.9 '/>
+		<polygon fill = 'rgb( 15,  86, 232)' fill-opacity = '0.500000' points = '313.1,422.4 324.5,422.4 324.5,272.9 313.1,272.9 '/>
+		<polygon fill = 'rgb( 15,  86, 232)' fill-opacity = '0.500000' points = '343.2,422.4 354.5,422.4 354.5,416.2 343.2,416.2 '/>
+		<polygon fill = 'rgb( 15,  86, 232)' fill-opacity = '0.500000' points = '373.2,422.4 384.5,422.4 384.5,420.3 373.2,420.3 '/>
+		<polygon fill = 'rgb( 15,  86, 232)' fill-opacity = '0.500000' points = '403.2,422.4 414.6,422.4 414.6,299.5 403.2,299.5 '/>
+		<polygon fill = 'rgb( 15,  86, 232)' fill-opacity = '0.500000' points = '433.2,422.4 444.6,422.4 444.6,360.9 433.2,360.9 '/>
+		<polygon fill = 'rgb( 15,  86, 232)' fill-opacity = '0.500000' points = '463.2,422.4 474.6,422.4 474.6,277.0 463.2,277.0 '/>
+		<polygon fill = 'rgb( 15,  86, 232)' fill-opacity = '0.500000' points = '493.3,422.4 504.6,422.4 504.6,313.9 493.3,313.9 '/>
+		<polygon fill = 'rgb( 15,  86, 232)' fill-opacity = '0.500000' points = '523.3,422.4 534.6,422.4 534.6,360.9 523.3,360.9 '/>
+		<polygon fill = 'rgb( 15,  86, 232)' fill-opacity = '0.500000' points = '553.3,422.4 564.7,422.4 564.7,401.8 553.3,401.8 '/>
+		<polygon fill = 'rgb( 15,  86, 232)' fill-opacity = '0.500000' points = '583.3,422.4 594.7,422.4 594.7,287.3 583.3,287.3 '/>
+		<polygon fill = 'rgb( 15,  86, 232)' fill-opacity = '0.500000' points = '613.3,422.4 624.7,422.4 624.7,256.6 613.3,256.6 '/>
+		<polygon fill = 'rgb( 15,  86, 232)' fill-opacity = '0.500000' points = '643.4,422.4 654.7,422.4 654.7,277.0 643.4,277.0 '/>
+		<polygon fill = 'rgb( 15,  86, 232)' fill-opacity = '0.500000' points = '673.4,422.4 684.7,422.4 684.7,305.7 673.4,305.7 '/>
+		<polygon fill = 'rgb( 15,  86, 232)' fill-opacity = '0.500000' points = '703.4,422.4 714.8,422.4 714.8,395.7 703.4,395.7 '/>
+		<polygon fill = 'rgb( 15,  86, 232)' fill-opacity = '0.500000' points = '733.4,422.4 744.8,422.4 744.8,420.3 733.4,420.3 '/>
+		<polygon fill = 'rgb( 15,  86, 232)' fill-opacity = '0.500000' points = '763.4,422.4 774.8,422.4 774.8,414.1 763.4,414.1 '/>
+		<polygon fill = 'rgb( 15,  86, 232)' fill-opacity = '0.500000' points = '793.5,422.4 804.8,422.4 804.8,416.2 793.5,416.2 '/>
+		<polygon fill = 'rgb( 15,  86, 232)' fill-opacity = '0.500000' points = '823.5,422.4 834.8,422.4 834.8,420.3 823.5,420.3 '/>
+	</g>
+</g>
+	</g>
+
+
+	<g id="gnuplot_plot_2" ><title>gnuplot_plot_2</title>
+        <g class="svg-courbe">
+	<g visibility="visible" onclick="gnuplot_svg.toggleVisibility(evt,'gnuplot_plot_2')">
+	<g transform="translate(770.3,112.8)" class="svg-legend-end">
+		<text><tspan>Fréquence dans le texte</tspan></text>
+	</g>
+	<g style = 'stroke:none; shape-rendering:crispEdges'>
+		<polygon fill = 'rgb(151, 171, 208)' fill-opacity = '0.500000' points = '778.6,113.9 820.8,113.9 820.8,102.7 778.6,102.7 '/>
+	</g>
+	</g>
+	<g style = 'stroke:none; shape-rendering:crispEdges'>
+		<polygon fill = 'rgb(151, 171, 208)' fill-opacity = '0.500000' points = '83.9,422.4 95.2,422.4 95.2,403.9 83.9,403.9 '/>
+		<polygon fill = 'rgb(151, 171, 208)' fill-opacity = '0.500000' points = '113.9,422.4 125.2,422.4 125.2,393.7 113.9,393.7 '/>
+		<polygon fill = 'rgb(151, 171, 208)' fill-opacity = '0.500000' points = '143.9,422.4 155.3,422.4 155.3,375.2 143.9,375.2 '/>
+		<polygon fill = 'rgb(151, 171, 208)' fill-opacity = '0.500000' points = '173.9,422.4 185.3,422.4 185.3,383.4 173.9,383.4 '/>
+		<polygon fill = 'rgb(151, 171, 208)' fill-opacity = '0.500000' points = '203.9,422.4 215.3,422.4 215.3,322.0 203.9,322.0 '/>
+		<polygon fill = 'rgb(151, 171, 208)' fill-opacity = '0.500000' points = '234.0,422.4 245.3,422.4 245.3,358.9 234.0,358.9 '/>
+		<polygon fill = 'rgb(151, 171, 208)' fill-opacity = '0.500000' points = '264.0,422.4 275.3,422.4 275.3,297.5 264.0,297.5 '/>
+		<polygon fill = 'rgb(151, 171, 208)' fill-opacity = '0.500000' points = '294.0,422.4 305.4,422.4 305.4,369.1 294.0,369.1 '/>
+		<polygon fill = 'rgb(151, 171, 208)' fill-opacity = '0.500000' points = '324.0,422.4 335.4,422.4 335.4,240.2 324.0,240.2 '/>
+		<polygon fill = 'rgb(151, 171, 208)' fill-opacity = '0.500000' points = '354.0,422.4 365.4,422.4 365.4,367.1 354.0,367.1 '/>
+		<polygon fill = 'rgb(151, 171, 208)' fill-opacity = '0.500000' points = '384.1,422.4 395.4,422.4 395.4,334.3 384.1,334.3 '/>
+		<polygon fill = 'rgb(151, 171, 208)' fill-opacity = '0.500000' points = '414.1,422.4 425.4,422.4 425.4,365.0 414.1,365.0 '/>
+		<polygon fill = 'rgb(151, 171, 208)' fill-opacity = '0.500000' points = '444.1,422.4 455.5,422.4 455.5,340.5 444.1,340.5 '/>
+		<polygon fill = 'rgb(151, 171, 208)' fill-opacity = '0.500000' points = '474.1,422.4 485.5,422.4 485.5,356.8 474.1,356.8 '/>
+		<polygon fill = 'rgb(151, 171, 208)' fill-opacity = '0.500000' points = '504.1,422.4 515.5,422.4 515.5,391.6 504.1,391.6 '/>
+		<polygon fill = 'rgb(151, 171, 208)' fill-opacity = '0.500000' points = '534.2,422.4 545.5,422.4 545.5,342.5 534.2,342.5 '/>
+		<polygon fill = 'rgb(151, 171, 208)' fill-opacity = '0.500000' points = '564.2,422.4 575.5,422.4 575.5,356.8 564.2,356.8 '/>
+		<polygon fill = 'rgb(151, 171, 208)' fill-opacity = '0.500000' points = '594.2,422.4 605.6,422.4 605.6,348.6 594.2,348.6 '/>
+		<polygon fill = 'rgb(151, 171, 208)' fill-opacity = '0.500000' points = '624.2,422.4 635.6,422.4 635.6,334.3 624.2,334.3 '/>
+		<polygon fill = 'rgb(151, 171, 208)' fill-opacity = '0.500000' points = '654.2,422.4 665.6,422.4 665.6,315.9 654.2,315.9 '/>
+		<polygon fill = 'rgb(151, 171, 208)' fill-opacity = '0.500000' points = '684.3,422.4 695.6,422.4 695.6,369.1 684.3,369.1 '/>
+		<polygon fill = 'rgb(151, 171, 208)' fill-opacity = '0.500000' points = '714.3,422.4 725.6,422.4 725.6,295.4 714.3,295.4 '/>
+		<polygon fill = 'rgb(151, 171, 208)' fill-opacity = '0.500000' points = '744.3,422.4 755.7,422.4 755.7,240.2 744.3,240.2 '/>
+		<polygon fill = 'rgb(151, 171, 208)' fill-opacity = '0.500000' points = '774.3,422.4 785.7,422.4 785.7,307.7 774.3,307.7 '/>
+		<polygon fill = 'rgb(151, 171, 208)' fill-opacity = '0.500000' points = '804.3,422.4 815.7,422.4 815.7,342.5 804.3,342.5 '/>
+		<polygon fill = 'rgb(151, 171, 208)' fill-opacity = '0.500000' points = '834.4,422.4 845.7,422.4 845.7,379.3 834.4,379.3 '/>
+	</g>
+</g>
+	</g>
+
+
+<g style="fill:none; color:green; stroke:currentColor; stroke-width:1.50; stroke-linecap:butt; stroke-linejoin:miter">
+	<path class="svg-tics" d='M63.6,54.1 L63.6,422.4 L855.0,422.4 M855.0,54.1 M63.6,54.1  h0.01'/></g>
+
+<script type="text/javascript"><![CDATA[
+// plot boundaries and axis scaling information for mousing 
+gnuplot_svg.plot_term_xmax = 880;
+gnuplot_svg.plot_term_ymax = 480;
+gnuplot_svg.plot_xmin = 63.6;
+gnuplot_svg.plot_xmax = 855.0;
+gnuplot_svg.plot_ybot = 422.4;
+gnuplot_svg.plot_ytop = 54.1;
+gnuplot_svg.plot_width = 791.4;
+gnuplot_svg.plot_height = 368.3;
+gnuplot_svg.plot_axis_xmin = -0.5;
+gnuplot_svg.plot_axis_xmax = 25.8625;
+gnuplot_svg.plot_axis_ymin = 0;
+gnuplot_svg.plot_axis_ymax = 18;
+gnuplot_svg.polar_mode = false;
+gnuplot_svg.plot_axis_x2min = "none"
+gnuplot_svg.plot_axis_y2min = "none"
+gnuplot_svg.plot_logaxis_x = 0;
+gnuplot_svg.plot_logaxis_y = 0;
+gnuplot_svg.plot_timeaxis_x = "";
+]]>
+</script>
+</g>
+
+  <text id="coord_text" text-anchor="start" pointer-events="none"
+  font-size="12" font-family="Arial"
+  visibility="hidden"> </text>
+
+  <image x='10' y='454' width='16' height='16' xlink:href='grid.png'
+    onclick='gnuplot_svg.toggleGrid();'/>
+</svg>
+

@@ -1,0 +1,1638 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta http-equiv="Copyrigth" content="Polymorphisme" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+  <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+  </style>
+  <link rel="stylesheet" type="text/css" media="screen, projection, print"
+    href="../slidy2/styles/slidy.css" />
+  <link rel="stylesheet" type="text/css" media="screen, projection, print"
+   href="../slidy2/styles/polymorphisme.css" />
+  <script type="text/javascript">/*<![CDATA[*/
+  /* 
+  March 19, 2004 MathHTML (c) Peter Jipsen http://www.chapman.edu/~jipsen
+  Released under the GNU General Public License version 2 or later.
+  See the GNU General Public License (at http://www.gnu.org/copyleft/gpl.html)
+  for more details.
+  */
+  
+  function convertMath(node) {// for Gecko
+    if (node.nodeType==1) {
+      var newnode = 
+        document.createElementNS("http://www.w3.org/1998/Math/MathML",
+          node.nodeName.toLowerCase());
+      for(var i=0; i < node.attributes.length; i++)
+        newnode.setAttribute(node.attributes[i].nodeName,
+          node.attributes[i].nodeValue);
+      for (var i=0; i<node.childNodes.length; i++) {
+        var st = node.childNodes[i].nodeValue;
+        if (st==null || st.slice(0,1)!=" " && st.slice(0,1)!="\n") 
+          newnode.appendChild(convertMath(node.childNodes[i]));
+      }
+      return newnode;
+    }
+    else return node;
+  }
+  
+  function convert() {
+    var mmlnode = document.getElementsByTagName("math");
+    var st,str,node,newnode;
+    for (var i=0; i<mmlnode.length; i++)
+      if (document.createElementNS!=null)
+        mmlnode[i].parentNode.replaceChild(convertMath(mmlnode[i]),mmlnode[i]);
+      else { // convert for IE
+        str = "";
+        node = mmlnode[i];
+        while (node.nodeName!="/MATH") {
+          st = node.nodeName.toLowerCase();
+          if (st=="#text") str += node.nodeValue;
+          else {
+            str += (st.slice(0,1)=="/" ? "</m:"+st.slice(1) : "<m:"+st);
+            if (st.slice(0,1)!="/") 
+               for(var j=0; j < node.attributes.length; j++)
+                 if (node.attributes[j].nodeValue!="italic" &&
+                   node.attributes[j].nodeValue!="" &&
+                   node.attributes[j].nodeValue!="inherit" &&
+                   node.attributes[j].nodeValue!=undefined)
+                   str += " "+node.attributes[j].nodeName+"="+
+                       "\""+node.attributes[j].nodeValue+"\"";
+            str += ">";
+          }
+          node = node.nextSibling;
+          node.parentNode.removeChild(node.previousSibling);
+        }
+        str += "</m:math>";
+        newnode = document.createElement("span");
+        node.parentNode.replaceChild(newnode,node);
+        newnode.innerHTML = str;
+      }
+  }
+  
+  if (document.createElementNS==null) {
+    document.write("<object id=\"mathplayer\"\
+    classid=\"clsid:32F66A20-7614-11D4-BD11-00104BD3F987\"></object>");
+    document.write("<?import namespace=\"m\" implementation=\"#mathplayer\"?>");
+  }
+  if(typeof window.addEventListener != 'undefined'){
+    window.addEventListener('load', convert, false);
+  }
+  if(typeof window.attachEvent != 'undefined') {
+    window.attachEvent('onload', convert);
+  }
+  /*]]>*/
+  </script>
+  <script src="../slidy2/scripts/slidy.js.gz"
+    charset="utf-8" type="text/javascript"></script>
+</head>
+<body>
+<div class="background"><img alt="" id="head-icon"
+src="../images/iconBlue.png" />
+<a href="../index.html"><img
+alt="Logo Polymorphisme" id="head-logo-fallback"
+src="../images/imgLogoPolymorphisme-blue-180.png" width="180px" height="180px"/></a></div>
+
+<div class="section slide level1" id="section">
+
+<!-- Auteur : Grégory Roche Copyright : Polymorphisme Date : 11/2013 -->
+<meta name="copyright" content="Copyright &#169; 2013 Polymorphisme" /> <meta name="duration" content="45" /> <meta name="font-size-adjustment" content="-1" />
+<script src="../slidy2/scripts/slidy.js"
+    charset="utf-8" type="text/javascript"></script>
+
+
+
+<div style="margin-top:150px;align:center">
+
+<br/>
+<h4 style="text-align:center">
+Giroll Party 2013
+</h4>
+
+<h2 style="text-align:center;color:black">
+Polymorphisme
+</h2>
+
+<h1 style="text-align:center;color:black">
+Protéger sa vie privée avec le chiffrement
+</h1>
+
+<center>
+<img src="../images/imgLogoGiroll.png" title="Logo Collectif Giroll" /> <img src="../images/imgLogoPolymorphisme-256.png" title="Logo Polymorphisme" />
+</center>
+
+</div>
+
+
+
+
+</div>
+<div class="section slide level1" id="la-stéganographie">
+<h1>La stéganographie</h1>
+<table><tr valign="top">
+<td>
+
+<div class="figure">
+<img src="../images/imgCacheCache.png" title="Jeu de cache-cache" /><p class="caption"></p>
+</div>
+</td><td>
+
+<p>« <em>Pour vivre heureux, vivons cachés</em> »</p>
+<p>La <strong>stéganographie</strong> est l'<em>art de la dissimulation</em>.</p>
+<p>Les méthodes :</p>
+<ul>
+  <li>
+l'encre sympathique;
+</li>
+  <li>
+le micropoint (E. Goldberg, 1920);
+</li>
+  <li>
+l'anonymat.
+</li>
+</ul>
+
+<p>Point fort : applicable à de nombreuses situations.</p>
+<p>Point faible : réside dans la transmission et la diffusion de l'information.</p>
+<br/> <br/> <br/> <br/> <br/> <br/> <br/>
+<p><span style="font-size:50%"><strong>Source</strong> : <em>Stéganographie</em> <a href="http://fr.wikipedia.org/wiki/St%C3%A9ganographie"><code class="url">http://fr.wikipedia.org/wiki/St%C3%A9ganographie</code></a>.</span></p>
+</td>
+</tr></table>
+
+
+
+
+
+</div>
+<div class="section slide level1" id="outguess">
+<h1>OutGuess</h1>
+<table width="97%"><tr valign="top">
+<td>
+
+<p><strong>OutGuess</strong> est un outil de stéganographie qui permet de cacher l'insertion d'une information.</p>
+<p>Installation d'OutGuess :</p>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">sudo</span> apt-get <span class="kw">install</span> outguess</code></pre>
+<p>Insérer un message secret dans une image :</p>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">echo</span> <span class="st">&#39;Message secret.&#39;</span> <span class="kw">&gt;</span> secret.txt
+$ outguess -d secret.txt imgOutguess.jpg imgOutguess.out.jpg
+Reading imgOutguess.jpg....
+JPEG compression quality <span class="kw">set</span> to 75
+Extracting usable bits:   28973 bits
+Correctable message size: 15370 bits, 53.05%
+Encoded <span class="st">&#39;secret.txt&#39;</span>: 128 bits, 16 bytes
+Finding best embedding...
+    ...
+    201:    66<span class="kw">(</span>41.5%<span class="kw">)</span>[51.6%], bias    40<span class="kw">(</span>0.61<span class="kw">)</span>, saved:     0, total:  0.23%
+201, 106: Embedding data: 128 <span class="kw">in</span> 28973
+Bits embedded: 159, changed: 66<span class="kw">(</span>41.5%<span class="kw">)</span>[51.6%], bias: 40, tot: 29101, skip: 28942
+Foiling statistics: corrections: 24, failed: 0, offset: 131.500000 +- 113.844192
+Total bits changed: 106 <span class="kw">(</span>change 66 + bias 40<span class="kw">)</span>
+Storing bitmap into data...
+Writing imgOutguess.out.jpg....</code></pre>
+</td><td>
+
+<p><span align="right"><img src="../images/imgLogoOutguess.png" title="Logo Outguess" /></span></p>
+</td></tr>
+</table>
+
+
+
+
+</div>
+<div class="section slide level1" id="outguess-suite">
+<h1>OutGuess, suite</h1>
+<p>Comparaison visuelle entre l'image originale et de l'image stéganographiée :</p>
+<p><img src="../images/imgOutguess.jpg" title="Logo Outguess" alt="Image originale" /> <img src="../images/imgOutguess.out.jpg" title="Logo Outguess stéganographié" alt="Image stéganographié" /></p>
+<p>Récupérer le message secret inséré dans l'image :</p>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ outguess -r imgOutguess.out.jpg secret.txt
+Reading imgOutguess.out.jpg....
+Extracting usable bits:   28973 bits
+Steg retrieve: seed: 201, len: 16
+$ <span class="kw">cat</span> secret.txt 
+Message secret.</code></pre>
+<p>Comparaison de la taille des images :</p>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">ls</span> -lh imgOutguess* <span class="kw">|</span> <span class="kw">awk</span> <span class="st">&#39;{ print $5,$9 }&#39;</span>
+57K imgOutguess.jpg
+29K imgOutguess.out.jpg</code></pre>
+<p><span style="font-size:50%"><strong>Source</strong> : <em>OutGuess</em> <a href="http://www.outguess.org/"><code class="url">http://www.outguess.org/</code></a>.</span></p>
+</div>
+<div class="section slide level1" id="la-cryptologie">
+<h1>La cryptologie</h1>
+<p>La <strong>cryptologie</strong> est la <em>science du secret</em>.</p>
+<ul>
+  <li>
+la <strong>cryptographie</strong> : chiffrement et déchiffrement d'un message;
+</li>
+  <li>
+la <strong>cryptanalyse</strong> : l'analyse d'un message chiffré.
+</li>
+</ul>
+
+
+
+</div>
+<div class="section slide level1" id="un-petit-lexique-de-la-cryptologie">
+<h1>Un petit lexique de la cryptologie</h1>
+<p><em>Alice</em> et <em>Bob</em> (R. Rivest, 1978) cherchent à communiquer de manière sûre en utilisant un <strong>cryptosystème</strong> <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo>𝒞</mo></mrow></math>, composé de :</p>
+<ul>
+  <li>
+un alphabet <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo>𝒜</mo><mo>=</mo><mo stretchy="false">{</mo><mi>a</mi><mo>,</mo><mo>…</mo><mo>,</mo><mi>z</mi><mo stretchy="false">}</mo></mrow></math> de taille <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mn>26</mn></mrow></math>;
+</li>
+  <li>
+un <strong>texte clair</strong> <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>T</mi><mo>=</mo><msub><mi>t</mi><mn>0</mn></msub><mo>…</mo><msub><mi>t</mi><mi>n</mi></msub></mrow></math> de taille <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>n</mi></mrow></math> : le message secret;
+</li>
+  <li>
+une <strong>clé</strong> <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>K</mi></mrow></math> : une donnée secrète;
+</li>
+  <li>
+un <strong>cryptogramme</strong> <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>C</mi><mo>=</mo><msub><mi>c</mi><mn>0</mn></msub><mo>…</mo><msub><mi>c</mi><mi>n</mi></msub></mrow></math> de taille <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>n</mi></mrow></math> : le message secret chiffré;
+</li>
+  <li>
+une fonction de <strong>chiffrement</strong> <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>E</mi><mi>K</mi></msub><mspace width="0.222em"></mspace><mo>:</mo><mi>T</mi><mo>↦</mo><mi>C</mi></mrow></math> (injective) : opération de transformation d'un texte clair en cryptogramme;
+</li>
+  <li>
+une fonction de <strong>déchiffrement</strong> <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>D</mi><mi>K</mi></msub><mspace width="0.222em"></mspace><mo>:</mo><mi>C</mi><mo>↦</mo><mi>T</mi></mrow></math> : opération inverse du chiffrement;
+</li>
+  <li>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>D</mi><mi>K</mi></msub><mo stretchy="false">(</mo><msub><mi>E</mi><mi>K</mi></msub><mo stretchy="false">(</mo><mi>T</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo><mo>=</mo><mi>T</mi></mrow></math>.
+</li>
+</ul>
+
+<p><em>Ève</em> joue le rôle d'attaquant :</p>
+<ul>
+  <li>
+<strong>attaque</strong> : une tentative de cryptanalyse;
+</li>
+  <li>
+<strong>décryptage</strong> : déchiffrement d'un cryptogramme sans connaissance de la clé.
+</li>
+</ul>
+
+<p>Rappel :</p>
+<ul>
+  <li>
+<strong>crypter</strong> et <strong>cryptage</strong> : sont des anglicisme;
+</li>
+  <li>
+<strong>coder</strong> et <strong>décoder</strong> : transcription d'une langue naturelle en une représentation numérique à l'aide d'un jeu de caractères. Pas de notion de clé, ne cache pas le sens de l'information. Exemple : le code Morse, le jeu de caractères ASCII.
+</li>
+</ul>
+
+
+
+
+</div>
+<div class="section slide level1" id="la-cryptographie">
+<h1>La cryptographie</h1>
+<p>La <strong>cryptographie</strong> est <em>la science du chiffrement des messages</em>.</p>
+<p>Le chiffrement des messages a pour but d'assurer :</p>
+<ul>
+  <li>
+la <strong>confidentialité</strong> : s'assurer que l'information n'est accessible qu'à ceux dont l'accès est autorisé;
+</li>
+  <li>
+l'<strong>authentification</strong> : procédure qui consiste à vérifier l'identité d'une personne;
+</li>
+  <li>
+l'<strong>intégrité</strong> des données désigne l'état de données;
+</li>
+  <li>
+la <strong>non répudiation</strong> : un expéditeur ne doit pas pouvoir nier à tort avoir envoyé un message.
+</li>
+</ul>
+
+<p>Les champs de la cryptographie :</p>
+<ul>
+  <li>
+la <strong>cryptographie symétrique</strong> (ou <strong>cryptographie à clé secrète</strong>);
+</li>
+  <li>
+la <strong>cryptographie asymétrique</strong> (ou <strong>cryptographie à clé publique</strong>);
+</li>
+  <li>
+les <strong>protocoles</strong>.
+</li>
+</ul>
+
+<br/> <br/> <br/> <br/>
+<p><span style="font-size:50%"><strong>Source</strong> : <em>Cryptographie</em> <a href="http://fr.wikipedia.org/wiki/Cryptographie"><code class="url">http://fr.wikipedia.org/wiki/Cryptographie</code></a>.</span></p>
+</div>
+<div class="section slide level1" id="la-cryptanalyse">
+<h1>La cryptanalyse</h1>
+<p>La <strong>cryptanalyse</strong> est <em>la science du décryptage d'un cryptogramme</em>.</p>
+<p>Les champs :</p>
+<ul>
+  <li>
+la cryptanalyse classique :
+<ul>
+    <li>
+l'<strong>analyse mathématique</strong>,
+</li>
+    <li>
+les <strong>attaques par force brute</strong>,
+</li>
+  </ul>  
+  </li>
+  <li>
+les <strong>attaques de l'implémentation</strong> : les implémentations contiennent des bugs exploitables;
+</li>
+  <li>
+l'<strong>ingénierie sociale</strong> : usage de ressorts psychologiques pour obtenir d’un tiers des informations ou des données.
+</li>
+</ul>
+
+
+
+</div>
+<div class="section slide level1" id="la-cryptographie-symétrique">
+<h1>La cryptographie symétrique</h1>
+<p>Le <strong>chiffrement symétrique</strong> (aussi appelé <strong>chiffrement à clé privée</strong> ou <strong>chiffrement à clé secrète</strong>) consiste à utiliser la même clé pour le chiffrement et le déchiffrement.</p>
+<p>Point fort : rapidité du chiffrement et du déchiffrement.</p>
+<p>Point faible : l'échange des clés et le nombre de clés.</p>
+<p>Pour un groupe de <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>N</mi></mrow></math> personnes utilisant un cryptosystème à clés secrètes, il est nécessaire de distribuer <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mfrac><mrow><mi>n</mi><mo stretchy="false">(</mo><mi>n</mi><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><mn>2</mn></mfrac></mrow></math> clés.</p>
+<p>Pour un groupe de 10 personnes, on obtient 45 clés.</p>
+<center>
+<img src="../images/imgCryptographieSymetrique.png" title="Cryptographie symétrique" /> <img src="../images/imgEchangeCles.png" title="Echange de clés" />
+</center>
+
+
+
+</div>
+<div class="section slide level1" id="le-chiffrement-par-transposition">
+<h1>Le chiffrement par transposition</h1>
+<p><strong>Chiffrement de transposition</strong>, <strong>chiffrement par permutation</strong> ou <strong>anagramme</strong>.</p>
+<p>Un alphabet <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo>𝒜</mo><mo>=</mo><mo stretchy="false">{</mo><mi>a</mi><mo>,</mo><mo>…</mo><mo>,</mo><mi>z</mi><mo stretchy="false">}</mo></mrow></math> de taille <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mn>26</mn></mrow></math>.</p>
+<p>Un message <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>T</mi><mo>=</mo><msub><mi>t</mi><mn>0</mn></msub><mo>…</mo><msub><mi>t</mi><mi>n</mi></msub></mrow></math> de taille <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>n</mi></mrow></math>.</p>
+<p>Une clé <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>K</mi><mo>=</mo><mi>σ</mi><mo>=</mo><mrow><mo stretchy="true">(</mo><mtable><mtr><mtd><mi>a</mi></mtd><mtd><mi>b</mi></mtd><mtd><mi>c</mi></mtd><mtd><mo>…</mo></mtd><mtd><mi>x</mi></mtd><mtd><mi>y</mi></mtd><mtd><mi>z</mi></mtd></mtr><mtr><mtd><mi>b</mi></mtd><mtd><mi>a</mi></mtd><mtd><mi>c</mi></mtd><mtd><mo>…</mo></mtd><mtd><mi>x</mi></mtd><mtd><mi>y</mi></mtd><mtd><mi>z</mi></mtd></mtr></mtable><mo stretchy="true">)</mo></mrow></mrow></math>.</p>
+<p>Un cryptogramme <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>C</mi><mo>=</mo><msub><mi>c</mi><mn>0</mn></msub><mo>…</mo><msub><mi>c</mi><mi>n</mi></msub></mrow></math> de taille <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>n</mi></mrow></math>.</p>
+<p>Un chiffrement par transposition de longueur de bloc <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>n</mi></mrow></math> induit <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>n</mi><mo>!</mo></mrow></math> permutations.</p>
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mn>20</mn><mo>!</mo><mo>≈</mo><msup><mn>10</mn><mn>19</mn></msup></mrow></math> permutations. <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mn>36</mn><mo>!</mo><mo>≈</mo><mn>4</mn><mo>.</mo><msup><mn>10</mn><mn>41</mn></msup></mrow></math> permutations.</p>
+<p>Cryptanalyse : attaque à texte clair connu (KPA, Known-Plaintext Attack).</p>
+<p>Constantes du chiffrement par transposition :</p>
+<ul>
+  <li>
+la fréquence des lettres du texte clair;
+</li>
+  <li>
+l'indice de coïncidence.
+</li>
+</ul>
+
+
+
+</div>
+<div class="section slide level1" id="la-scytale-vème-s.-av.-j.-c.">
+<h1>La scytale (V<sup>ème</sup> s. av. J.-C.)</h1>
+<table width="97%"><tr valign="top">
+<td>
+<p>Au V<sup>ème</sup> s. av. J.-C., les Spartiates utilisent la <strong>scytale</strong>.</p>
+<p><strong>Un exemple d'utilisation de la scytale</strong> :</p>
+<p>Le cryptogramme :</p>
+<pre><code>MSETSEUEARR_SISG_EMQN</code></pre>
+<p>Cryptanalyse :</p>
+<ul>
+  <li>
+taille du message : <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mn>21</mn></mrow></math> caractères;
+</li>
+  <li>
+création de tableaux : <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mrow><mn>2</mn><mo>×</mo><mn>11</mn><mo>,</mo><mn>3</mn><mo>×</mo><mn>7</mn><mo>,</mo><mn>4</mn><mo>×</mo><mn>6</mn><mo>,</mo><mn>5</mn><mo>×</mo><mn>5</mn><mo>,</mo><mn>6</mn><mo>×</mo><mn>4</mn><mo>,</mo><mn>7</mn><mo>×</mo><mn>3</mn></mrow></mrow></math>.
+</li>
+</ul>
+
+<table>
+  <tr class="header"><th colspan="7">
+Tableau de dimensions <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mn>7</mn><mo>×</mo><mn>3</mn></mrow></math>
+</th></tr>
+  <tr><td>
+M
+</td><td>
+S
+</td><td>
+E
+</td><td>
+T
+</td><td>
+S
+</td><td>
+E
+</td><td>
+U
+</td></tr>
+  <tr><td>
+E
+</td><td>
+A
+</td><td>
+R
+</td><td>
+R
+</td><td>
+_
+</td><td>
+S
+</td><td>
+I
+</td></tr>
+  <tr><td>
+S
+</td><td>
+G
+</td><td>
+_
+</td><td>
+E
+</td><td>
+M
+</td><td>
+Q
+</td><td>
+N
+</td></tr>
+</table>
+
+<p>Finalement, on obtient le texte clair :</p>
+<pre><code>MESSAGER_TRES_MESQUIN</code></pre>
+<br/> <br/> <br/> <br/>
+<p><span style="font-size:50%"><strong>Source</strong> : <em>Scytale</em> <a href="http://fr.wikipedia.org/wiki/Scytale"><code class="url">http://fr.wikipedia.org/wiki/Scytale</code></a>.</span></p>
+</td><td width="40%">
+
+<div class="figure">
+<img src="../images/imgScytale.png" title="Scytale" /><p class="caption"></p>
+</div>
+</td>
+</tr></table>
+
+
+
+
+
+</div>
+<div class="section slide level1" id="le-chiffrement-par-substitution">
+<h1>Le chiffrement par substitution</h1>
+<p>Les types de chiffrement par substitution :</p>
+<ul>
+  <li>
+<strong>mono-alphabétique</strong> : remplace chaque lettre du message par une autre lettre de l'alphabet;
+</li>
+  <li>
+<strong>poly-alphabétique</strong> : remplace chaque lettre du message par une autre lettre d'un alphabet indiqué par une lettre de la clé;
+</li>
+  <li>
+<strong>polygrammes</strong> : remplace un groupe de caractères du message par un autre groupe de caractères.
+</li>
+</ul>
+
+
+
+
+
+
+</div>
+<div class="section slide level1" id="le-chiffrement-mono-alphabétique">
+<h1>Le chiffrement mono-alphabétique</h1>
+<p>Le <strong>chiffrement mono-alphabétique</strong> remplace chaque lettre du texte clair par une autre lettre de l'alphabet.</p>
+<p>Une clé <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>K</mi></mrow></math> est un entier <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>n</mi></mrow></math> non nul.</p>
+<p>En arithmétique modulaire, pour tout <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>i</mi><mo>∈</mo><mo>𝒜</mo></mrow></math>, on a :</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo stretchy="true">{</mo><mtable><mtr><mtd columnalign="left"><msub><mi>C</mi><mi>n</mi></msub><mo>=</mo><msub><mi>E</mi><mi>n</mi></msub><mo stretchy="false">(</mo><mi>i</mi><mo stretchy="false">)</mo><mo>≡</mo><mi>i</mi><mo>+</mo><mi>n</mi></mtd><mtd columnalign="left"><mo stretchy="false">[</mo><mn>26</mn><mo stretchy="false">]</mo></mtd></mtr><mtr><mtd columnalign="left"><msub><mi>T</mi><mi>n</mi></msub><mo>=</mo><msub><mi>D</mi><mi>n</mi></msub><mo stretchy="false">(</mo><mi>i</mi><mo stretchy="false">)</mo><mo>≡</mo><mi>i</mi><mo>−</mo><mi>n</mi></mtd><mtd columnalign="left"><mo stretchy="false">[</mo><mn>26</mn><mo stretchy="false">]</mo></mtd></mtr></mtable><mo stretchy="true">&#65279;</mo></mrow></math></p>
+<p><strong>Cryptanalyse du chiffrement mono-alphabétique</strong> :</p>
+<ul>
+  <li>
+analyse fréquentielle : examine les répétitions des lettres du cryptogramme (Al-Kindi, IX<sup>ème</sup> s.);
+</li>
+  <li>
+attaque par force brute : consiste à tester les <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></math> clés possibles.
+</li>
+</ul>
+
+<p>Pour un alphabet de <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>n</mi></mrow></math> lettres, on dispose de <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></math> translations.</p>
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mrow><mo stretchy="true">(</mo><mtable><mtr><mtd><mi>a</mi></mtd><mtd><mi>b</mi></mtd><mtd><mi>c</mi></mtd><mtd><mo>…</mo></mtd><mtd><mi>x</mi></mtd><mtd><mi>y</mi></mtd><mtd><mi>z</mi></mtd></mtr><mtr><mtd><mi>d</mi></mtd><mtd><mi>e</mi></mtd><mtd><mi>f</mi></mtd><mtd><mo>…</mo></mtd><mtd><mi>a</mi></mtd><mtd><mi>b</mi></mtd><mtd><mi>c</mi></mtd></mtr></mtable><mo stretchy="true">)</mo></mrow></mrow></math></p>
+</div>
+<div class="section slide level1" id="le-chiffre-de-césar-ier-s.-av.-j.-c.">
+<h1>Le chiffre de César (I<sup>er</sup> s. av. J.-C.)</h1>
+<table width="97%"><tr valign="top">
+<td>
+
+<p>À l'origine, le <strong>chiffre de César</strong> utilise un alphabet <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo>𝒜</mo></mrow></math> de 31 caractères (l'alphabet latin, l'espace, la virgule, le point et le point d'interogation) et la clé secrète <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>K</mi><mo>=</mo><mn>3</mn></mrow></math>.</p>
+<p><strong>Un exemple de chiffre de César</strong> :</p>
+<p>La clé secrète <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>K</mi><mo>=</mo><mn>3</mn></mrow></math>.</p>
+<p>Chiffrement d'un texte clair en cryptogramme :</p>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">echo</span> <span class="st">&#39;Je suis très émue de vous dire que j&#39;</span>ai
+bien compris l<span class="st">&#39;autre soir que vous aviez</span>
+<span class="st">toujours une envie folle de me faire</span>
+<span class="st">danser. ... &#39;</span> <span class="kw">&gt;</span> secret.txt
+$ <span class="kw">tr</span> [a-z] [d-za-c] <span class="kw">&lt;</span> secret.txt <span class="kw">&gt;</span> cryptogramme.txt
+$ <span class="kw">cat</span> cryptogramme.txt
+Jh vxlv wuèv épxh gh yrxv gluh txh m<span class="st">&#39;dl </span>
+<span class="st">elhq frpsulv o&#39;</span>dxwuh vrlu txh yrxv dylhc
+wrxmrxuv xqh hqylh irooh gh ph idluh gdqvhu<span class="kw">.</span>  ..<span class="kw">.</span> </code></pre>
+<p>Déchiffrement du cryptogramme :</p>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">tr</span> [d-za-c] [a-z] <span class="kw">&lt;</span> cryptogramme.txt
+Je suis très émue de vous dire que j<span class="st">&#39;ai</span>
+<span class="st">bien compris l&#39;</span>autre soir que vous aviez
+toujours une envie folle de me faire
+danser<span class="kw">.</span> ..<span class="kw">.</span> </code></pre>
+</td><td>
+
+<p><img src="../images/imgChiffreCesar01.png" title="Le chiffre de César" /> <img src="../images/imgChiffreCesar02.png" title="Le chiffre de César" /></p>
+</td>
+</tr></table>
+
+
+</div>
+<div class="section slide level1" id="cryptanalyse-par-analyse-de-fréquence">
+<h1>Cryptanalyse par analyse de fréquence</h1>
+<table width="97%"><tr valign="top">
+<td>
+
+<p><strong>Graphe d'analyse de fréquence</strong></p>
+<div class="figure">
+<img src="../images/imgTestAnalyseFrequence.svg" title="Analyse de fréquence" /><p class="caption"></p>
+</div>
+<p>La clé secrète : <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>K</mi><mo>=</mo><mn>3</mn></mrow></math>.</p>
+<br/> <br/> <br/>
+<p><span style="font-size:50%"><strong>Source</strong> : <em>Fréquence des lettres</em> <a href="http://www.lexique.org/listes/liste_lettres.php"><code class="url">http://www.lexique.org/listes/liste_lettres.php</code></a></span></p>
+</td><td>
+
+
+</td>
+</tr></table>
+
+
+
+
+
+</div>
+<div class="section slide level1" id="le-chiffrement-poly-alphabétique">
+<h1>Le chiffrement poly-alphabétique</h1>
+<p>Le <strong>chiffrement poly-alphabétique</strong> remplace chaque lettre du message par une autre lettre d'un alphabet indiqué par une lettre de la clé.</p>
+<p>Point fort : l'analyse de fréquence est inefficace.</p>
+<p>Point faible : difficulté de son utilisation manuelle.</p>
+<p>Un alphabet <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo>𝒜</mo><mo>=</mo><mo stretchy="false">{</mo><mi>a</mi><mo>,</mo><mo>…</mo><mo>,</mo><mi>z</mi><mo stretchy="false">}</mo></mrow></math> de taille <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mn>26</mn></mrow></math>.</p>
+<p>Un message <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>T</mi><mo>=</mo><msub><mi>t</mi><mn>0</mn></msub><mo>…</mo><msub><mi>t</mi><mi>n</mi></msub></mrow></math> de taille <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>n</mi></mrow></math>.</p>
+<p>Une clé <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>K</mi><mo>=</mo><msub><mi>k</mi><mn>0</mn></msub><mo>…</mo><msub><mi>k</mi><mi>m</mi></msub></mrow></math> de taille <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>m</mi></mrow></math>.</p>
+<p>Un cryptogramme <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>C</mi><mo>=</mo><msub><mi>c</mi><mn>0</mn></msub><mo>…</mo><msub><mi>c</mi><mi>n</mi></msub></mrow></math> de taille <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>n</mi></mrow></math>.</p>
+<p>La suite <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo stretchy="false">(</mo><msub><mi>n</mi><mi>i</mi></msub><msub><mo stretchy="false">)</mo><mrow><mi>i</mi><mo>∈</mo><mo>𝒜</mo></mrow></msub></mrow></math> des occurrences des lettres <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>i</mi></mrow></math> de <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo>𝒜</mo></mrow></math>.</p>
+<p>Pour tout <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>i</mi><mo>∈</mo><mo>𝒜</mo></mrow></math>, on a :</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo stretchy="true">{</mo><mtable><mtr><mtd columnalign="left"><msub><mi>C</mi><mi>i</mi></msub><mo>=</mo><msub><mi>E</mi><mi>K</mi></msub><mo stretchy="false">(</mo><msub><mi>t</mi><mi>i</mi></msub><mo stretchy="false">)</mo><mo>=</mo><mo stretchy="false">(</mo><msub><mi>t</mi><mi>i</mi></msub><mo>+</mo><msub><mi>k</mi><mi>i</mi></msub><mo stretchy="false">)</mo></mtd><mtd columnalign="left"><mo stretchy="false">[</mo><mn>26</mn><mo stretchy="false">]</mo></mtd></mtr><mtr><mtd columnalign="left"><msub><mi>T</mi><mi>i</mi></msub><mo>=</mo><msub><mi>D</mi><mi>K</mi></msub><mo stretchy="false">(</mo><msub><mi>c</mi><mi>i</mi></msub><mo stretchy="false">)</mo><mo>=</mo><mo stretchy="false">(</mo><msub><mi>c</mi><mi>i</mi></msub><mo>−</mo><msub><mi>k</mi><mi>i</mi></msub><mo stretchy="false">)</mo></mtd><mtd columnalign="left"><mo stretchy="false">[</mo><mn>26</mn><mo stretchy="false">]</mo></mtd></mtr></mtable><mo stretchy="true">&#65279;</mo></mrow></math></p>
+</div>
+<div class="section slide level1" id="le-chiffre-de-vigenère-xvième-s.">
+<h1>Le chiffre de Vigenère (XVI<sup>ème</sup> s.)</h1>
+<table><tr valign="top">
+<td>
+
+<p>En 1586, le <strong>chiffre de Vigenère</strong> est découvert; et sera cassé par C. Babbage en 1854.</p>
+<p><strong>Un exemple du chiffre de Vigenère</strong> :</p>
+<p>La clé secrète : cl<strong>e</strong>s<strong>e</strong>c<strong>r</strong>ete</p>
+<p>Chiffrement d'un texte clair en cryptogramme :</p>
+<table style="font-family:monospace">
+<tr><td style="color:#FF4949">
+Hannibal Lecter donne le nom de Faust Federel.
+</td></tr>
+<tr><td style="color:#3C8E43">
+clesecre tecles ecret ec les ec retec lesecre
+</td></tr>
+<tr><td style="color:#F1D462">
+JLRFMDRP EIEEIJ HQERX PG YSE HG WENWV QIVITVP.
+</td></tr>
+</table> 
+
+<p>Déchiffrement du cryptogramme :</p>
+<table style="font-family:monospace">
+<tr><td style="color:#3C8E43">
+clesecre tecles ecret ec les ec retec lesecre
+</td></tr>
+<tr><td style="color:#F1D462">
+JLRFMDRP EIEEIJ HQERX PG YSE HG WENWV QIVITVP.
+</td></tr>
+<tr><td style="color:#FF4949">
+Hannibal Lecter donne le nom de Faust Federel.
+</td></tr>
+</table> 
+
+<br/> <br/> <br/> <br/>
+<p><span style="font-size:50%"><strong>Note</strong> : l'agent Clarisse Starling devine l'anagramme « <em>sulfate de fer</em> » :)</span></p>
+</td><td width="10%">
+
+<div class="figure">
+<img src="../images/imgCarreVigenere.svg" title="Carré de Vigenère" /><p class="caption"></p>
+</div>
+</td>
+</tr></table>
+
+
+
+</div>
+<div class="section slide level1" id="cryptanalyse-du-chiffre-de-vigenère">
+<h1>Cryptanalyse du chiffre de Vigenère</h1>
+<table>
+  <tr class="header"><th>
+Méthode
+</th><th>
+Test de Kasiski
+</th><th>
+Test de Friedman
+</th></tr>
+  <tr><td>
+1 déterminer le type de chiffrement
+</td><td></td><td>
+ok
+</td></tr>
+  <tr><td>
+2 déterminer la taille <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>m</mi></mrow></math> de la clé <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>K</mi></mrow></math>
+</td><td>
+ok
+</td><td>
+ok
+</td></tr>
+  <tr><td>
+3 déterminer la clé <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>K</mi><mo>=</mo><msub><mi>k</mi><mn>0</mn></msub><mo>…</mo><msub><mi>k</mi><mi>m</mi></msub></mrow></math>
+</td><td></td><td>
+ok
+</td></tr>
+  <tr><td>
+4 vérification du résultat du déchiffrement
+</td><td></td><td></td></tr>
+</table>
+
+
+<p>Attaque par force brute : on a <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msup><mn>26</mn><mi>m</mi></msup></mrow></math> possibilités.</p>
+</div>
+<div class="section slide level1" id="le-test-de-kasiski-1863">
+<h1>Le test de Kasiski (1863)</h1>
+<table><tr valign="top">
+<td>
+
+<p>Le <strong>test de Kasiski</strong> permet de déterminer la taille <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>m</mi></mrow></math> de la clé <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>K</mi></mrow></math>.</p>
+<p>Le test de Kasiski suppose que deux n-grammes identiques du texte clair seront chiffrés avec la même partie de la clé, lorsque la distance entre ces n-grammes est <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>δ</mi><mo>≡</mo><mn>0</mn><mspace width="0.222em"></mspace><mo stretchy="false">[</mo><mi>m</mi><mo stretchy="false">]</mo></mrow></math>.</p>
+<p>La taille <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>m</mi></mrow></math> de la clé est un diviseur du <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>p</mi><mi>g</mi><mi>c</mi><mi>d</mi></mrow></math> des distances entre deux n-grammes identiques, avec <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>n</mi><mo>≥</mo><mn>2</mn></mrow></math>.</p>
+<p><strong>Méthode</strong> :</p>
+<ul>
+  <li>
+trouver les suites de n-grammes identiques dans le cryptogramme;
+</li>
+  <li>
+calculer les distances entre les n-grammes de chaque suite : <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>δ</mi><mn>1</mn></msub></mrow></math>, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>δ</mi><mn>2</mn></msub></mrow></math>, …;
+</li>
+  <li>
+conjoncture : <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>m</mi><mo stretchy="false">∣</mo><msub><mi>δ</mi><mn>1</mn></msub></mrow></math>, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>m</mi><mo stretchy="false">∣</mo><msub><mi>δ</mi><mn>2</mn></msub></mrow></math>, … donc <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>m</mi><mo stretchy="false">∣</mo><mi>p</mi><mi>g</mi><mi>c</mi><mi>d</mi><mo stretchy="false">(</mo><msub><mi>δ</mi><mn>1</mn></msub><mo>,</mo><msub><mi>δ</mi><mn>2</mn></msub><mo>,</mo><mo>…</mo><mo stretchy="false">)</mo></mrow></math>.
+</li>
+</ul>
+
+</td><td>
+
+<p><strong>Exemple d'un calcul de distance</strong> :</p>
+<table style="text-align:right">
+<tr class="header"><td style="text-align:left">
+i
+</td>
+<td>
+0
+</td><td>
+1
+</td>
+<td>
+2
+</td><td>
+3
+</td>
+<td>
+4
+</td><td>
+5
+</td>
+<td>
+6
+</td><td>
+7
+</td>
+<td>
+8
+</td><td>
+9
+</td>
+<td>
+10
+</td><td>
+11
+</td>
+<td>
+12
+</td><td>
+13
+</td>
+<td>
+14
+</td><td>
+15
+</td>
+</tr>
+
+<tr><td style="text-align:left">
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>t</mi><mi>i</mi></msub></mrow></math>
+</td>
+<td>
+J
+</td><td>
+<strong>A</strong>
+</td>
+<td>
+<strong>I</strong>
+</td><td>
+C
+</td>
+<td>
+R
+</td><td>
+E
+</td>
+<td>
+E
+</td><td>
+D
+</td>
+<td>
+E
+</td><td>
+S
+</td>
+<td>
+P
+</td><td>
+A
+</td>
+<td>
+L
+</td><td>
+<strong>A</strong>
+</td
+><td>
+<strong>I</strong>
+</td><td>
+S
+</td>
+</tr>
+
+<tr><td style="text-align:left">
+clé
+</td>
+<td>
+P
+</td><td>
+<strong>A</strong>
+</td>
+<td>
+<strong>S</strong>
+</td><td>
+S
+</td>
+<td>
+W
+</td><td>
+D
+</td>
+<td>
+P
+</td><td>
+A
+</td>
+<td>
+S
+</td><td>
+S
+</td>
+<td>
+W
+</td><td>
+D
+</td>
+<td>
+P
+</td><td>
+<strong>A</strong>
+</td>
+<td>
+<strong>S</strong>
+</td><td>
+S
+</td>
+</tr>
+
+<tr><td style="text-align:left">
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>c</mi><mi>i</mi></msub></mrow></math>
+</td><td>
+V
+</td>
+<td style="color:gray">
+<strong>A</strong>
+</td>
+<td style="color:gray">
+<strong>A</strong>
+</td>
+<td style="color:gray">
+U
+</td>
+<td style="color:gray">
+N
+</td>
+<td style="color:gray">
+H
+</td>
+<td style="color:gray">
+T
+</td>
+<td style="color:gray">
+D
+</td>
+<td style="color:gray">
+W
+</td>
+<td style="color:gray">
+K
+</td>
+<td style="color:gray"> 
+L
+</td>
+<td style="color:gray"> 
+D
+</td>
+<td style="color:gray"> 
+A
+</td>
+<td>
+<strong>A</strong>
+</td>
+<td>
+<strong>A</strong>
+</td>
+<td>
+K
+</td></tr>
+
+</table>
+
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>δ</mi><mo stretchy="false">(</mo><msub><mi>c</mi><mi>i</mi></msub><mo>,</mo><msub><mi>c</mi><mi>j</mi></msub><mo stretchy="false">)</mo><mo>=</mo><mo stretchy="false">∣</mo><mi>i</mi><mo>−</mo><mi>j</mi><mspace width="0.222em"></mspace><mo stretchy="false">∣</mo></mrow></math> <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mspace width="0.222em"></mspace><mspace width="0.222em"></mspace><mspace width="0.222em"></mspace><mspace width="0.222em"></mspace><mi>δ</mi><mo stretchy="false">(</mo><msub><mi>c</mi><mn>1</mn></msub><mo>,</mo><msub><mi>c</mi><mn>13</mn></msub><mo stretchy="false">)</mo><mo>=</mo><mn>13</mn><mo>−</mo><mn>1</mn><mo>=</mo><mn>12</mn><mo>≡</mo><mn>0</mn><mspace width="0.222em"></mspace><mo stretchy="false">[</mo><mn>6</mn><mo stretchy="false">]</mo></mrow></math></p>
+</td>
+</tr></table>
+
+
+
+</div>
+<div class="section slide level1" id="exemple-dun-test-de-kasiski">
+<h1>Exemple d'un test de Kasiski</h1>
+<table><tr valign="top">
+<td style="width:40%;font-size:20px;text-align:justify">
+KQOWE FVJPU JUUNU KGLME KJINM WUXFQ MKJBG WRLFN FGHUD <font color="#EE6600"><b>WUU</b></font> MB SVLPS NCMUE KQC TE SWR <font color="#0000FF"><b>EE K</b></font> OYSS IWCTU AXYOT APXPL WPNTC GOJBG FQHTD <font color="#00AA22"><b>WXIZA</b></font> <font color="#00AA22"><b>YG</b></font> FFN SXCSE YNCTS SPNTU JNYTG GWZGR <font color="#EE6600"><b>WUU</b></font> NE JUUQE APYME KQHUI DUXFP GUYTS MTFFS H <font color="#FF0000"><b>NUOC ZGM</b></font> RU WEYTR GKMEE DCTVR ECFBD JQCUS WVBPN LGOYL SKMTE FVJJT WWMFM WPNME MTMHR SPXFS SKFFS T <font color="#FF0000"><b>NUOC ZGM</b></font><b>DO EOY</b> <font color="#0000FF"><b>EE K</b></font> CPJR GPMUR SKHFR SEIUE VGOYC <font color="#00AA22"><b>WXIZA YG</b></font> OSA ANY<b>DO EOY</b>JL WUNHA MEBFE LXYVL WNOJN SIOFR WUCCE SWKVI D <font color="#990099"><b>GMU</b></font> C GOCRU WGNMA AFFVN SIUDE KQHCE UCPFC MPVSU DGAVE MNYMA MVLFM AOYFN TQCUA FVFJN XKLNE IWCWO DCCUL WRIFT W <font color="#990099"><b>GMU</b></font> S WOVMA TNYBU HTCOC WFYTN MGYTQ MKBBN LGFBT WOJFT WGNTE JKNEE DCLDH WTVBU VGFBI JG
+</td><td>
+
+
+<table>
+<col width="58%" />
+<col width="15%" />
+<col width="6%" />
+<col width="6%" />
+<col width="6%" />
+<col width="6%" />
+<thead>
+<tr class="header">
+<th align="left">n-grammes</th>
+<th align="left"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>δ</mi><mi>i</mi></msub></mrow></math></th>
+<th align="left"></th>
+<th align="left"></th>
+<th align="left"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>m</mi></mrow></math></th>
+<th align="left"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">2</td>
+<td align="left">3</td>
+<td align="left">5</td>
+<td align="left">19</td>
+</tr>
+<tr class="even">
+<td align="left"><font color="#EE6600"><b>WUU</b></font></td>
+<td align="left">95</td>
+<td align="left">0</td>
+<td align="left">0</td>
+<td align="left">1</td>
+<td align="left">1</td>
+</tr>
+<tr class="odd">
+<td align="left"><font color="#0000FF"><b>EE K</b></font></td>
+<td align="left">200</td>
+<td align="left">3</td>
+<td align="left">0</td>
+<td align="left">2</td>
+<td align="left">0</td>
+</tr>
+<tr class="even">
+<td align="left"><font color="#00AA22"><b>WXIZA YG</b></font></td>
+<td align="left">190</td>
+<td align="left">1</td>
+<td align="left">0</td>
+<td align="left">1</td>
+<td align="left">1</td>
+</tr>
+<tr class="odd">
+<td align="left"><font color="#FF0000"><b>NUOC ZGM</b></font></td>
+<td align="left">80</td>
+<td align="left">4</td>
+<td align="left">0</td>
+<td align="left">1</td>
+<td align="left">0</td>
+</tr>
+<tr class="even">
+<td align="left"><b>DO EOY</b></td>
+<td align="left">45</td>
+<td align="left">0</td>
+<td align="left">2</td>
+<td align="left">1</td>
+<td align="left">0</td>
+</tr>
+<tr class="odd">
+<td align="left"><font color="#990099"><b>GMU</b></font></td>
+<td align="left">90</td>
+<td align="left">1</td>
+<td align="left">2</td>
+<td align="left">1</td>
+<td align="left">0</td>
+</tr>
+</tbody>
+</table>
+<p>Toutes les distances <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>δ</mi><mi>i</mi></msub></mrow></math> sont divibles par <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>m</mi><mo>=</mo><mn>5</mn></mrow></math>.</p>
+</td></tr></table>
+
+
+
+</div>
+<div class="section slide level1" id="le-test-de-friedman-1925">
+<h1>Le test de Friedman (1925)</h1>
+<p>Le <strong>test de Friedman</strong> repose sur la fréquence des lettres.</p>
+<p>Il donne des informations sur :</p>
+<ul>
+  <li>
+le type de chiffrement;
+</li>
+  <li>
+la taille <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>m</mi></mrow></math> de la clé <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>K</mi></mrow></math>.
+</li>
+</ul>
+
+
+
+</div>
+<div class="section slide level1" id="lindice-de-coïncidence">
+<h1>L'indice de coïncidence</h1>
+<p>L'<strong>indice de coïncidence</strong> est la probabilité d'obtenir deux lettres identiques.</p>
+<p>L'indice de coïncidence d'un message :</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>I</mi><mi>C</mi><mo>=</mo><munder><mo>∑</mo><mrow><mi>i</mi><mo>∈</mo><mo>𝒜</mo></mrow></munder><mfrac><msubsup><mi>C</mi><msub><mi>n</mi><mi>i</mi></msub><mn>2</mn></msubsup><msubsup><mi>C</mi><mi>n</mi><mn>2</mn></msubsup></mfrac><mo>=</mo><munder><mo>∑</mo><mrow><mi>i</mi><mo>∈</mo><mo>𝒜</mo></mrow></munder><mfrac><mrow><msub><mi>n</mi><mi>i</mi></msub><mo stretchy="false">(</mo><msub><mi>n</mi><mi>i</mi></msub><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><mrow><mi>n</mi><mo stretchy="false">(</mo><mi>n</mi><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mfrac></mrow></math></p>
+<p>Approche probabiliste : pour chacune des lettres <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>i</mi></mrow></math> de l'alphabet <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo>𝒜</mo></mrow></math>, la probabilité d'obtenir deux lettres identiques est la probabilité d'obtenir l'une d'entre elle est <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>n</mi><mi>i</mi></msub><mo>/</mo><mi>n</mi></mrow></math>, puis la probabilité d'obtenir de nouveau cette lettre <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo stretchy="false">(</mo><msub><mi>n</mi><mi>i</mi></msub><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo><mo>/</mo><mo stretchy="false">(</mo><mi>n</mi><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></math>.</p>
+<p>Approche combinatoire : pour chacune des lettres <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>i</mi></mrow></math> de l'alphabet <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo>𝒜</mo></mrow></math>, il existe <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msubsup><mi>C</mi><msub><mi>n</mi><mi>i</mi></msub><mn>2</mn></msubsup></mrow></math> façons de choisir 2 lettres identiques parmi <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>n</mi><mi>i</mi></msub></mrow></math>, et il existe <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msubsup><mi>C</mi><mi>n</mi><mn>2</mn></msubsup></mrow></math> façons de choisir 2 lettres parmi <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>n</mi></mrow></math>. Finalement, la probabilité d'obtenir deux lettres identiques <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msubsup><mi>C</mi><msub><mi>n</mi><mi>i</mi></msub><mn>2</mn></msubsup><mo>/</mo><msubsup><mi>C</mi><mi>n</mi><mn>2</mn></msubsup></mrow></math>.</p>
+<p>L'indice de coïncidence d'une langue :</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>I</mi><mi>C</mi><mo>=</mo><munder><mo>∑</mo><mrow><mi>i</mi><mo>∈</mo><mo>𝒜</mo></mrow></munder><mfrac><mrow><msub><mi>n</mi><mi>i</mi></msub><mo stretchy="false">(</mo><msub><mi>n</mi><mi>i</mi></msub><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><mrow><mi>n</mi><mo stretchy="false">(</mo><mi>n</mi><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mfrac><mo>→</mo><munder><mo>∑</mo><mrow><mi>i</mi><mo>∈</mo><mo>𝒜</mo></mrow></munder><msubsup><mi>p</mi><mi>i</mi><mn>2</mn></msubsup></mrow></math></p>
+<p>où la probabilité d'occurrence <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>p</mi><mi>i</mi></msub></mrow></math> de la lettre <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>i</mi></mrow></math> doit être connue. La probabilité d'obtenir deux fois une même lettre est <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>p</mi><mi>i</mi></msub><mo>⋅</mo><msub><mi>p</mi><mi>i</mi></msub></mrow></math>.</p>
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>I</mi><mi>a</mi></msub><mo>=</mo><mn>0</mn><mo>,</mo><mn>0385</mn></mrow></math>; <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>I</mi><mrow><mi>f</mi><mi>r</mi></mrow></msub><mo>=</mo><mn>0</mn><mo>,</mo><mn>0746</mn></mrow></math>; <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>I</mi><mrow><mi>e</mi><mi>n</mi></mrow></msub><mo>=</mo><mn>0</mn><mo>,</mo><mn>0667</mn></mrow></math>; <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>I</mi><mrow><mi>d</mi><mi>e</mi></mrow></msub><mo>=</mo><mn>0</mn><mo>,</mo><mn>07187</mn></mrow></math></p>
+</div>
+<div class="section slide level1" id="ic-des-chiffrements-poly-alphabétiques">
+<h1>IC des chiffrements poly-alphabétiques</h1>
+<p>Le nombre de paires de lettres chiffrées avec la même lettre de la clé : <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>N</mi><mrow><mi>i</mi><mi>d</mi></mrow></msub><mo>=</mo><mfrac><mrow><mi>n</mi><mo stretchy="false">(</mo><mi>n</mi><mo>/</mo><mi>m</mi><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><mn>2</mn></mfrac><mo>=</mo><mfrac><mrow><mi>n</mi><mo stretchy="false">(</mo><mi>n</mi><mo>−</mo><mi>m</mi><mo stretchy="false">)</mo></mrow><mrow><mn>2</mn><mi>m</mi></mrow></mfrac></mrow></math></p>
+<p>Il existe <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>n</mi></mrow></math> choix pour la première lettre, il reste <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>n</mi><mo>/</mo><mi>m</mi><mo>−</mo><mn>1</mn></mrow></math> choix pour la seconde lettre; aussi chaque paire de lettre a été comptée 2 fois. Sinon, on peut partir de <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>m</mi><msubsup><mi>C</mi><mrow><mi>n</mi><mo>/</mo><mi>m</mi></mrow><mn>2</mn></msubsup></mrow></math>.</p>
+<p>Le nombre de paires de lettres chiffrées avec une lettre différente de la clé : <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>N</mi><mrow><mi>d</mi><mi>i</mi><mi>f</mi><mi>f</mi></mrow></msub><mo>=</mo><mfrac><mrow><mi>n</mi><mo stretchy="false">(</mo><mi>n</mi><mo>−</mo><mi>n</mi><mo>/</mo><mi>m</mi><mo stretchy="false">)</mo></mrow><mn>2</mn></mfrac><mo>=</mo><mfrac><mrow><msup><mi>n</mi><mn>2</mn></msup><mo stretchy="false">(</mo><mi>m</mi><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><mrow><mn>2</mn><mi>m</mi></mrow></mfrac></mrow></math></p>
+<p>Il existe <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>n</mi></mrow></math> choix pour la première lettre, il reste <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>n</mi><mo>−</mo><mi>n</mi><mo>/</mo><mi>m</mi></mrow></math> choix pour la seconde lettre; aussi chaque paire de lettre a été comptée 2 fois. Sinon, on peut partir de <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>N</mi><mrow><mi>i</mi><mi>d</mi></mrow></msub></mrow></math> : on a <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>N</mi><mrow><mi>d</mi><mi>i</mi><mi>f</mi><mi>f</mi></mrow></msub><mo>=</mo><msubsup><mi>C</mi><mi>n</mi><mn>2</mn></msubsup><mo>−</mo><msub><mi>N</mi><mrow><mi>i</mi><mi>d</mi></mrow></msub></mrow></math>.</p>
+<p>Le nombre de paires de lettres dans un texte : <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>N</mi><mi>p</mi></msub><mo>=</mo><msubsup><mi>C</mi><mi>n</mi><mn>2</mn></msubsup><mo>=</mo><mfrac><mrow><mi>n</mi><mo stretchy="false">(</mo><mi>n</mi><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><mn>2</mn></mfrac></mrow></math></p>
+<p>Le nombre de paires de lettres identiques dans un texte : <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>N</mi><mrow><mi>p</mi><mi>i</mi></mrow></msub><mo>=</mo><msub><mi>N</mi><mrow><mi>i</mi><mi>d</mi></mrow></msub><mo>⋅</mo><msub><mi>I</mi><mi>l</mi></msub><mo>+</mo><msub><mi>N</mi><mrow><mi>d</mi><mi>i</mi><mi>f</mi><mi>f</mi></mrow></msub><mo>⋅</mo><msub><mi>I</mi><mi>a</mi></msub></mrow></math></p>
+<p>Finalement, on obtient l'<strong>indice de coïncidence poly-alphabétique</strong> :</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>I</mi><mi>C</mi><mo>=</mo><mfrac><msub><mi>N</mi><mrow><mi>p</mi><mi>i</mi></mrow></msub><msub><mi>N</mi><mi>p</mi></msub></mfrac><mo>=</mo><mfrac><mrow><mi>n</mi><mo>−</mo><mi>m</mi></mrow><mrow><mi>m</mi><mo stretchy="false">(</mo><mi>n</mi><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mfrac><mo>⋅</mo><msub><mi>I</mi><mi>l</mi></msub><mo>+</mo><mfrac><mrow><mi>n</mi><mo stretchy="false">(</mo><mi>m</mi><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><mrow><mi>m</mi><mo stretchy="false">(</mo><mi>n</mi><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mfrac><mo>⋅</mo><msub><mi>I</mi><mi>a</mi></msub></mrow></math></p>
+</div>
+<div class="section slide level1" id="ic-et-type-de-chiffrement">
+<h1>IC et type de chiffrement</h1>
+<table><tr valign="top">
+<td>
+
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>I</mi><mi>C</mi><mo>=</mo><mfrac><mrow><mi>n</mi><mo>−</mo><mi>m</mi></mrow><mrow><mi>m</mi><mo stretchy="false">(</mo><mi>n</mi><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mfrac><mo>⋅</mo><msub><mi>I</mi><mi>l</mi></msub><mo>+</mo><mfrac><mrow><mi>n</mi><mo stretchy="false">(</mo><mi>m</mi><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><mrow><mi>m</mi><mo stretchy="false">(</mo><mi>n</mi><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mfrac><mo>⋅</mo><msub><mi>I</mi><mi>a</mi></msub></mrow></math></p>
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>I</mi><mi>l</mi></msub><mo>≥</mo><msub><mi>I</mi><mi>c</mi></msub><mo>&gt;</mo><msub><mi>I</mi><mi>a</mi></msub></mrow></math></p>
+<p>Si l'IC du cryptogramme est peu différent de l'IC du texte clair, alors le chiffrement est une transposition ou est mono-alphabétique; car la fréquence des caractères est conservée : <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>I</mi><mi>c</mi></msub><mo>≈</mo><msub><mi>I</mi><mi>l</mi></msub></mrow></math>.</p>
+<p>Si l'IC du cryptogramme est très différent de celui du texte clair, alors il est vraisemblable que le chiffrement soit poly-alphabétique : <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>I</mi><mi>c</mi></msub><mo>≪</mo><msub><mi>I</mi><mi>l</mi></msub></mrow></math>.</p>
+<p>A.N. : <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>I</mi><mi>a</mi></msub><mo>=</mo><mn>0</mn><mo>,</mo><mn>0385</mn></mrow></math> et <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>I</mi><mi>f</mi></msub><mo>=</mo><mn>0</mn><mo>,</mo><mn>0776</mn></mrow></math>.</p>
+</td><td width="30%">
+
+<div class="figure">
+<img src="../images/imgTestFriedmanIcp.svg" title="Indice de coïncidence pour les chiffrements poly-alphabétiques" /><p class="caption"></p>
+</div>
+</td>
+</tr></table>
+
+
+
+
+</div>
+<div class="section slide level1" id="la-taille-de-la-clé">
+<h1>La taille de la clé</h1>
+<table><tr valign="top">
+<td>
+
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>m</mi><mo>=</mo><mfrac><mrow><mo stretchy="false">(</mo><msub><mi>I</mi><mi>l</mi></msub><mo>−</mo><msub><mi>I</mi><mi>a</mi></msub><mo stretchy="false">)</mo><mi>n</mi></mrow><mrow><mo stretchy="false">(</mo><mi>n</mi><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo><msub><mi>I</mi><mi>c</mi></msub><mo>−</mo><mi>n</mi><msub><mi>I</mi><mi>a</mi></msub><mo>+</mo><msub><mi>I</mi><mi>l</mi></msub></mrow></mfrac></mrow></math></p>
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mn>1</mn><mo>≤</mo><mi>m</mi><mo>≤</mo><mi>n</mi></mrow></math></p>
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>I</mi><mi>c</mi></msub><mo>=</mo><msub><mi>I</mi><mi>l</mi></msub><mo>⇒</mo><mi>m</mi><mo>=</mo><mn>1</mn></mrow></math> et <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>I</mi><mi>c</mi></msub><mo>=</mo><msub><mi>I</mi><mi>a</mi></msub><mo>⇒</mo><mi>m</mi><mo>=</mo><mi>n</mi></mrow></math></p>
+<p>A.N. : <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>I</mi><mi>a</mi></msub><mo>=</mo><mn>0</mn><mo>,</mo><mn>0385</mn></mrow></math> et <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>I</mi><mi>f</mi></msub><mo>=</mo><mn>0</mn><mo>,</mo><mn>0776</mn></mrow></math></p>
+</td><td width="30%">
+
+<div class="figure">
+<img src="../images/imgTestKasiski.svg" title="Taille de la clé" /><p class="caption"></p>
+</div>
+</td>
+</tr></table>
+
+
+
+
+</div>
+<div class="section slide level1" id="méthode">
+<h1>Méthode</h1>
+<table><tr valign="top">
+<td>
+
+<p>Création d'une matrice <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>M</mi></mrow></math> de dimension <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>m</mi><mo>×</mo><mi>n</mi><mo>/</mo><mi>m</mi></mrow></math> :</p>
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>M</mi><mrow><mi>m</mi><mo>,</mo><mi>n</mi><mo>/</mo><mi>m</mi></mrow></msub><mo>=</mo><mrow><mo stretchy="true">(</mo><mtable><mtr><mtd><msub><mi>c</mi><mn>0</mn></msub></mtd><mtd><msub><mi>c</mi><mi>m</mi></msub></mtd><mtd><msub><mi>c</mi><mrow><mn>2</mn><mi>m</mi></mrow></msub></mtd><mtd><mo>⋯</mo></mtd></mtr><mtr><mtd><msub><mi>c</mi><mn>1</mn></msub></mtd><mtd><msub><mi>c</mi><mrow><mi>m</mi><mo>+</mo><mn>1</mn></mrow></msub></mtd><mtd><msub><mi>c</mi><mrow><mn>2</mn><mi>m</mi><mo>+</mo><mn>1</mn></mrow></msub></mtd><mtd><mo>⋯</mo></mtd></mtr><mtr><mtd><mo>⋮</mo></mtd><mtd><mo>⋮</mo></mtd><mtd><mo>⋱</mo></mtd><mtd><mo>⋮</mo></mtd></mtr><mtr><mtd><msub><mi>c</mi><mrow><mi>m</mi><mo>−</mo><mn>1</mn></mrow></msub></mtd><mtd><msub><mi>c</mi><mrow><mn>2</mn><mi>m</mi><mo>−</mo><mn>1</mn></mrow></msub></mtd><mtd><msub><mi>c</mi><mrow><mn>3</mn><mi>m</mi><mo>−</mo><mn>1</mn></mrow></msub></mtd><mtd><mo>⋯</mo></mtd></mtr></mtable><mo stretchy="true">)</mo></mrow></mrow></math></p>
+<!--
+Si $m$ était en effet la longueur de clé, $I_c(L_i) \approx I_f = 0{,}0776$.
+-->
+
+<table style="text-align:left">
+<tr class="header"><th width="50px">
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>δ</mi></mrow></math>
+</th><th>
+Sous-chaînes
+</th><th>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>I</mi><mi>c</mi></msub></mrow></math>
+</th></tr>
+<tr><td>
+1
+</td><td>
+KQOWE FVJPU JUUNU KGLME KJINM WUXFQ MKJBG WRLFN FGHUD…
+</td><td>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mn>0</mn><mo>,</mo><mn>04350</mn></mrow></math>
+</td></tr>
+<tr><td>
+2
+</td><td>
+KOE VP JUU GM KIM UF MJG WLN GU…
+</td><td>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mn>0</mn><mo>,</mo><mn>04473</mn></mrow></math>
+</td></tr>
+<tr><td></td><td>
+QW FJU UN KLE JN WXQ KB RF FHD…
+</td><td>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mn>0</mn><mo>,</mo><mn>04344</mn></mrow></math>
+</td></tr>
+<tr><td>
+3
+</td><td>
+KWVUUKMJMXMBRNH…
+</td><td>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mn>0</mn><mo>,</mo><mn>04272</mn></mrow></math>
+</td></tr>
+<tr><td></td><td>
+QEJJNGEIWFKGLFU…
+</td><td>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mn>0</mn><mo>,</mo><mn>04362</mn></mrow></math>
+</td></tr>
+<tr><td></td><td>
+OFPUULKNUQJWFGD…
+</td><td>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mn>0</mn><mo>,</mo><mn>04267</mn></mrow></math>
+</td></tr>
+<tr><td>
+…
+</td><td>
+…
+</td><td>
+…
+</td></tr>
+<!--
+<tr><td>5</td><td>&#x2026;</td><td style="background-color:#EEE">$0{,}08509$</td></tr>
+<tr><td></td><td>&#x2026;</td><td style="background-color:#EEE">$0{,}07196$</td></tr>
+<tr><td></td><td>&#x2026;</td><td style="background-color:#EEE">$0{,}06756$</td></tr>
+<tr><td></td><td>&#x2026;</td><td style="background-color:#EEE">$0{,}06872$</td></tr>
+<tr><td></td><td>&#x2026;</td><td style="background-color:#EEE">$0{,}08775$</td></tr>
+-->
+</table>
+
+
+</td><td width="30%">
+
+<div class="figure">
+<img src="../images/imgTestFriedmanKeySize.svg" title="Taille de la clé" /><p class="caption"></p>
+</div>
+<p>Pour <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>δ</mi><mo>=</mo><mn>5</mn></mrow></math>, on a <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>I</mi><mi>c</mi></msub><mo>≈</mo><msub><mi>I</mi><mi>f</mi></msub></mrow></math> donc <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>m</mi><mo>=</mo><mn>5</mn></mrow></math> très probablement.</p>
+</td>
+</tr></table>
+
+<!-- Source : http://www.apprendre-en-ligne.net/crypto/stat/friedman.html -->
+
+
+
+</div>
+<div class="section slide level1" id="seconde-étape-déterminer-la-clé">
+<h1>Seconde étape : déterminer la clé</h1>
+<p>Supposons que nous connaissons la taille <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>m</mi></mrow></math> de la clé <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>K</mi></mrow></math>…</p>
+<p>Pour trouver la clé <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>K</mi><mo>=</mo><msub><mi>k</mi><mn>0</mn></msub><mo>…</mo><msub><mi>k</mi><mi>m</mi></msub></mrow></math> :</p>
+<ul>
+  <li>
+pour chaque <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>L</mi><mi>i</mi></msub></mrow></math> et pour chaque lettre <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>i</mi></mrow></math> de <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo>𝒜</mo></mrow></math> :
+<ul>
+      <li>
+déchiffrer <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>L</mi><mi>i</mi></msub></mrow></math> avec <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>i</mi></mrow></math> en utilisant la méthode de César,
+</li>
+      <li>
+mesurer les fréquences des lettres de la sous-chaîne déchiffrée,
+</li>
+      <li>
+les comparées avec la fréquence de distribution du français (définir la distance, par exemple, comme somme de carrés),
+</li>
+    </ul>
+  <li>
+pour la déviation minimale, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>k</mi><mi>i</mi></msub><mo>=</mo><mi>i</mi></mrow></math>;
+</li>
+  <li>
+répéter pour chaque caractère <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>k</mi><mi>i</mi></msub></mrow></math>.
+</li>
+</ul>
+
+
+
+</div>
+<div class="section slide level1" id="troisième-étape-vérification">
+<h1>Troisième étape : vérification</h1>
+<ul>
+  <li>
+déchiffrer le cryptogramme en utilisant la clé <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>K</mi></mrow></math>;
+</li>
+  <li>
+vérifier l'indice de coïncidence <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>I</mi><mi>C</mi></mrow></math> du texte clair;
+</li>
+  <li>
+s'il diffère trop de <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>I</mi><mi>l</mi></msub></mrow></math> :
+<ul>
+      <li>
+tester avec une clé d'une taille <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>m</mi><mo>±</mo><mn>1</mn></mrow></math>,
+</li>
+      <li>
+recommencer jusqu'à obtenir <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>I</mi><mi>C</mi><mo>≈</mo><msub><mi>I</mi><mi>l</mi></msub></mrow></math>,
+</li>
+    </ul>
+  <li>
+intervalle recommandé pour <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><msub><mi>I</mi><mi>f</mi></msub></mrow></math> : <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>056</mn><mo>;</mo><mn>0</mn><mo>,</mo><mn>075</mn><mo stretchy="false">]</mo></mrow></math>
+</li>
+</ul>
+
+
+
+
+</div>
+<div class="section slide level1" id="enigma-seconde-guerre-mondiale">
+<h1>Enigma (Seconde Guerre mondiale)</h1>
+<table><tr valign="top">
+<td>
+
+<p>La machine <strong>Enigma</strong> est inventée en 1918 par A. Scherbius. Les cryptologues britanniques, dont Alan Turing, construisent la Bombe dont l'objectif est de casser les chiffres d'Enigma.</p>
+<p>Points forts : nombre de clés presque infini, et la réversibilité.</p>
+<p>Points faibles : recherche de bigrammes, de mots probables, bulletin météo, une unique clé pour un réseau.</p>
+<p>Enigma et UNIX : la commande <code>mcrypt</code>.</p>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">echo</span> <span class="st">&#39;Message secret&#39;</span> <span class="kw">&gt;</span> secret.txt
+$ mcrypt -a enigma --keymode scrypt --bare secret.txt
+Enter the passphrase <span class="kw">(</span>maximum of 512 characters<span class="kw">)</span>
+Please use a combination of upper and lower <span class="kw">case</span> letters and numbers.
+Enter passphrase: 
+Enter passphrase: 
+
+File secret.txt was encrypted.
+$ vim secret.txt.nc
+^S°ÙO´UÚ^_zRw&lt;8c&gt;1<span class="kw">`</span>d</code></pre>
+<br/>
+<p><span style="font-size:50%"><strong>Source</strong> : <em>Cryptanalyse d'Enigma</em> <a href="http://fr.wikipedia.org/wiki/Cryptanalyse_d%27Enigma"><code class="url">http://fr.wikipedia.org/wiki/Cryptanalyse_d%27Enigma</code></a>.</span></p>
+</td><td>
+
+<div class="figure">
+<img src="../images/imgEnigma.png" title="Enigma" /><p class="caption"></p>
+</div>
+</td>
+</tr></table>
+
+
+
+
+</div>
+<div class="section slide level1" id="le-mot-de-passe">
+<h1>Le mot de passe</h1>
+<p>Complexité théorique d'un mot de passe de longueur <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>l</mi></mrow></math> avec un alphabet de taille <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>n</mi></mrow></math> :</p>
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>c</mi><mi>a</mi><mi>r</mi><mi>d</mi><mo stretchy="false">(</mo><mo>ℱ</mo><mo stretchy="false">(</mo><msub><mo>ℕ</mo><mi>l</mi></msub><mo>,</mo><msub><mo>ℕ</mo><mi>n</mi></msub><mo stretchy="false">)</mo><mo stretchy="false">)</mo><mo>=</mo><munder><munder><mrow><mi>n</mi><mo>×</mo><mo>…</mo><mo>×</mo><mi>n</mi></mrow><mo accent="true">︸</mo></munder><mrow><mi>l</mi><mi>f</mi><mi>o</mi><mi>i</mi><mi>s</mi></mrow></munder><mo>=</mo><msup><mi>n</mi><mi>l</mi></msup></mrow></math></p>
+<p>La <strong>robustesse d'un mot de passe</strong> :</p>
+<ul>
+  <li>
+la longueur <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>l</mi></mrow></math> : supérieure à 12 caractères;
+</li>
+  <li>
+la taille de l'alphabet <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>n</mi></mrow></math> : étendue à la bicaméralité, aux chiffres, signes de ponctuation, diacritiques ( ̋ <em>double accent aigu</em>);
+</li>  
+  <li>
+la complexité : éviter les répétitions, les sous-chaînes ayant une signification.
+</li>
+</ul>
+
+<p>Comparatif entre la complexité d'un mot de passe et la taille d'une clé :</p>
+<table>
+<col width="6%" />
+<col width="6%" />
+<col width="7%" />
+<col width="16%" />
+<col width="64%" />
+<thead>
+<tr class="header">
+<th align="left">l</th>
+<th align="left">N</th>
+<th align="left">Clé</th>
+<th align="left">Complexité</th>
+<th align="left">Commentaire de l'ANSSI</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">8</td>
+<td align="left">70</td>
+<td align="left">49</td>
+<td align="left">très faible</td>
+<td align="left">taille usuelle</td>
+</tr>
+<tr class="even">
+<td align="left">12</td>
+<td align="left">90</td>
+<td align="left">78</td>
+<td align="left">faible</td>
+<td align="left">taille minimale pour des mots de passe ergonomiques.</td>
+</tr>
+<tr class="odd">
+<td align="left">16</td>
+<td align="left">36</td>
+<td align="left">82</td>
+<td align="left">moyen</td>
+<td align="left">taille pour des mots de passe plus sûrs.</td>
+</tr>
+<tr class="even">
+<td align="left">20</td>
+<td align="left">90</td>
+<td align="left">130</td>
+<td align="left">fort</td>
+<td align="left">force équivalente à la plus petite taille de clé de l’algorithme AES (128 bits).</td>
+</tr>
+</tbody>
+</table>
+<br/>
+<p><span style="font-size:50%"><strong>Source</strong> : <em>Calculer la ’force’ d’un mot de passe</em> <a href="http://www.securite-informatique.gouv.fr/gp_article728.html"><code class="url">http://www.securite-informatique.gouv.fr/gp_article728.html</code></a>.</span></p>
+</div>
+<div class="section slide level1" id="la-création-et-lutilisation-dun-mot-de-passe">
+<h1>La création et l'utilisation d'un mot de passe</h1>
+<table><tr valign="top">
+<td>
+
+<p>1 Création : choisir une méthode et une phrase</p>
+<table>
+<col width="15%" />
+<col width="68%" />
+<col width="16%" />
+<thead>
+<tr class="header">
+<th align="left">Méthode</th>
+<th align="left">Phrase</th>
+<th align="left">Code</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">acrostiche</td>
+<td align="left">« <em>Un tiens vaut mieux que deux tu l’auras.</em> »</td>
+<td align="left">1tvmq2tl’a</td>
+</tr>
+<tr class="even">
+<td align="left">phonétique</td>
+<td align="left">« <em>J’ai acheté huit cd pour cent euros cet après-midi.</em> »</td>
+<td align="left">ght8CDp100E7am</td>
+</tr>
+</tbody>
+</table>
+<p>2 Étendre l'alphabet puis associer le mot de passe à un accès</p>
+<table>
+<col width="30%" />
+<col width="25%" />
+<col width="25%" />
+<thead>
+<tr class="header">
+<th align="left">Code</th>
+<th align="left">Alphabet étendu</th>
+<th align="left">Accès (site Web)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">1tvmq2tl’<strong>a</strong></td>
+<td align="left">1tvmq2tl’<strong>@</strong></td>
+<td align="left">1tvmq2tl’@<strong>Gir</strong></td>
+</tr>
+<tr class="even">
+<td align="left">ght8CD<strong>p100</strong>E7am</td>
+<td align="left">ght8CD<strong>%</strong>E7am</td>
+<td align="left">ght8CD%E7am<strong>Pol</strong></td>
+</tr>
+</tbody>
+</table>
+<p>3 Règles d'utilisation :</p>
+<ul>
+  <li>
+ne jamais communiquer son mot de passe;
+</li>
+  <li>
+ne jamais utiliser le même mot de passe pour différents accès;
+</li>
+  <li>
+sa durée de vie : de préférence courte, terminée au moindre soupçon de compromission.
+</li>
+</ul>
+
+<p><span style="font-size:50%"><strong>Données aléatoires</strong> : nombre <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>π</mi></mrow></math>, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>e</mi></mrow></math>; OEIS (On-Line Encyclopedia of Integer Sequences, <a href="http://oeis.org/"><code class="url">http://oeis.org/</code></a>), etc.</span></p>
+</td><td>
+
+<div class="figure">
+<img src="../images/imgMnemotechnique.png" title="Mnémotechnique" /><p class="caption"></p>
+</div>
+</td>
+</tr></table>
+
+
+
+
+</div>
+<div class="section slide level1" id="jtr">
+<h1>JTR</h1>
+<table><tr valign="top">
+<td>
+
+<p>« <em>Sésame, ouvre-toi !</em> »</p>
+<p><strong>JTR</strong> (John The Ripper) est un outil permettant aux administrateurs système de trouver les mots de passe faibles.</p>
+<p>La commande <code>john</code> est capable de casser différents formats de chiffrement de mots de passe : les mots de passe <code>crypt</code>, MD5, etc.</p>
+<p>Elle utilise 4 modes dont les principaux sont :</p>
+<ul>
+  <li>
+mode simple : <code>john</code> applique les règles de transformations définies dans le fichier <code>/etc/john/john.conf</code> sur les informations GECOS des utilisateurs;
+</li>
+  <li>
+attaque par dictionnaire : <code>john</code> essaye un à un tous les mots de dictionnaire donnés;
+</li>
+  <li>
+mode incrémental (attaque par force brute) : <code>john</code> va essayer toutes les combinaisons de caractères possibles, jusqu'à trouver le mot de passe.
+</li> 
+</ul>
+
+<br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/>
+<p><span style="font-size:50%"><strong>Source</strong> : <em>John the Ripper password cracker</em> <a href="http://www.openwall.com/john/"><code class="url">http://www.openwall.com/john/</code></a>.</span></p>
+</td><td>
+
+<div class="figure">
+<img src="../images/imgLogoJohnTheRipper.png" title="Logo John the Ripper" /><p class="caption"></p>
+</div>
+</td>
+</tr></table>
+
+
+
+</div>
+<div class="section slide level1" id="linterface-johnny">
+<h1>L'interface Johnny</h1>
+<p><strong>Johnny</strong> est une interface graphique pour John The Ripper.</p>
+<p>Installation de Johnny :</p>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">wget</span> http://openwall.info/wiki/_media/john/johnny_1.1.3_i386.deb
+$ <span class="kw">sudo</span> dpkg --install johnny_1.1.3_i386.deb</code></pre>
+<p>L'interface graphique Johnny :</p>
+<center>
+<img src="../images/imgUIJohnny.jpg" title="Johnny" />
+</center>
+
+<p><span style="font-size:50%"><strong>Source</strong> : <em>Johnny - GUI for John the Ripper</em> <a href="http://openwall.info/wiki/john/johnny"><code class="url">http://openwall.info/wiki/john/johnny</code></a>.</span></p>
+</div>
+<div class="section slide level1" id="gpg">
+<h1>GPG</h1>
+<table><tr valign="top">
+<td>
+
+<p><strong>GnuPG</strong> (GNU Privacy Guard) est un outil permettant de sécuriser les communications et le stockage de données.</p>
+<p>Installation du paquet <code>gnupg</code> :</p>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">sudo</span> apt-get <span class="kw">install</span> gnupg</code></pre>
+<p>Pour chiffrer le fichier <code>secret.txt</code> :</p>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ gpg -c secret.txt
+$ vim secret.txt.gpg
+<span class="kw">&lt;</span>8c<span class="kw">&gt;</span>^M^D^C^C^Bo<span class="kw">&lt;</span>9c<span class="kw">&gt;</span>ó«^BD¥Ø<span class="kw">`</span>É+èu²ÅWì]ÉÕÉ<span class="kw">(&lt;94&gt;&lt;84&gt;</span>ú¡
+<span class="kw">&lt;</span>9b<span class="kw">&gt;&lt;80&gt;</span>^Z<span class="kw">&lt;</span>8d<span class="kw">&gt;</span>n¹^YÝ;xAÍøz^?äÉ^W<span class="kw">&lt;</span>8f<span class="kw">&gt;</span>C¹®ìúy<span class="kw">&lt;</span>8f<span class="kw">&gt;</span>0!</code></pre>
+<p>Pour déchiffrer le fichier <code>secret.txt.gpg</code> :</p>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ gpg -o secret.out.txt -d secret.txt.gpg</code></pre>
+<br/> <br/> <br/> <br/> <br/>
+<p><span style="font-size:50%"><strong>Source</strong> : <em>GPG</em> <a href="http://www.gnupg.org/"><code class="url">http://www.gnupg.org/</code></a>.</span></p>
+</td><td>
+
+<div class="figure">
+<img src="../images/imgLogoGpg.png" title="Logo GNU Privacy Guard" /><p class="caption"></p>
+</div>
+</td>
+</tr></table>
+
+
+
+</div>
+<div class="section slide level1" id="linterface-gpa">
+<h1>L'interface GPA</h1>
+<p><strong>GPA</strong> (Gnu Privacy Assistant) est une interface graphique utilisateur pour GnuPG.</p>
+<p>Installation de GPA :</p>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">sudo</span> apt-get <span class="kw">install</span> gpa</code></pre>
+<p>L'interface graphique GPA :</p>
+<center>
+<img src="../images/imgUIGpa.jpg" title="Interface Gnu Privacy Assistant" />
+</center>
+
+<p><span style="font-size:50%"><strong>Source</strong> : <em>GPA</em> <a href="http://www.gnupg.org/related_software/gpa/index.fr.html"><code class="url">http://www.gnupg.org/related_software/gpa/index.fr.html</code></a>.</span></p>
+</div>
+<div class="section slide level1" id="la-cryptographie-asymétrique-années-70">
+<h1>La cryptographie asymétrique (années 70)</h1>
+<p>La <strong>cryptographie asymétrique</strong>, ou <strong>cryptographie à clé publique</strong>, est fondée sur l'existence des fonctions à sens unique et à brèche secrète.</p>
+<p>Les <strong>fonctions à sens unique</strong> (&quot;clé publique&quot;) sont telles qu'une fois appliquées à un message, il est extrêmement difficile de retrouver le message original.</p>
+<p>L'existence d'une <strong>brèche secrète</strong> (&quot;clé privée&quot;) permet cependant à la personne qui a conçu la fonction à sens unique de déchiffrer facilement le cryptogramme grâce à un élément d'information qu'elle possède : la clé privé.</p>
+<p>Point faible : l'échange de la clé publique sur un canal non sécurisé.</p>
+<p>Pour se prémunir contre ce risque on fait généralement appel à une <strong>infrastructure à clés publiques</strong>.</p>
+<p>L'<strong>algorithme RSA</strong> (1975) :</p>
+<p>L'algorithme RSA repose sur une fonction a sens unique ou plutôt une fonction très difficilement réversible.</p>
+<p>Facile : <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mo>×</mo><mspace width="0.222em"></mspace><mo>:</mo><mo>ℕ</mo><mo>×</mo><mo>ℕ</mo><mo>→</mo><mo>ℕ</mo><mo>,</mo><mo stretchy="false">(</mo><mi>n</mi><mo>,</mo><mi>m</mi><mo stretchy="false">)</mo><mo>↦</mo><mi>n</mi><mo>×</mo><mi>m</mi></mrow></math></p>
+<p>Difficile : <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>f</mi><mspace width="0.222em"></mspace><mo>:</mo><mi>n</mi><mo>↦</mo><mi>p</mi><mo>×</mo><mi>q</mi></mrow></math> où <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>p</mi><mo>,</mo><mi>q</mi><mo>∈</mo><mo>𝒫</mo></mrow></math>.</p>
+<p>La taille des clés RSA devraient aujourd'hui être au minimum de 1024 bits. En 2005, le nombre RSA-200, un nombre de 663 bits a été factorisé.</p>
+</div>
+<div class="section slide level1" id="openssl">
+<h1>OpenSSL</h1>
+<table><tr valign="top">
+<td>
+
+<p><strong>OpenSSL</strong> est une boîte à outils qui implémente les protocoles Secure Sockets Layer (SSL v2/v3) et Transport Layer Security (TLS v1); c'est aussi une librairie dédiée à la cryptographie.</p>
+<p>La bibliothèque permet de réaliser des applications client/serveur sécurisées s'appuyant sur SSL/TLS.</p>
+<p>La commande en ligne (<code>openssl</code>) permet :</p>
+<ul>
+ <li>
+la création de clés RSA, DSA;
+</li>
+ <li>
+la création de certificats X.509;
+</li>
+ <li>
+le calcul d'empreintes (MD5, SHA, …);
+</li>
+ <li>
+le chiffrement et déchiffrement (DES, IDEA, RC2, RC4, …);
+</li>
+ <li>
+la réalisation de tests de clients et serveurs SSL/TLS;
+</li>
+ <li>
+la signature et le chiffrement de courriers (S/MIME).
+</li>
+</ul>
+
+<br/> <br/> <br/> <br/> <br/>
+<p><span style="font-size:50%"><strong>Source</strong> : <em>OpenSSL: The Open Source toolkit for SSL/TLS</em> <a href="http://www.openssl.org/"><code class="url">http://www.openssl.org/</code></a>.</span></p>
+</td><td>
+
+<div class="figure">
+<img src="../images/imgLogoOpenSsl.png" title="Logo OpenSSL" /><p class="caption"></p>
+</div>
+</td>
+</tr></table>
+
+
+
+</div>
+<div class="section slide level1" id="la-création-de-certificats-cacert">
+<h1>La création de certificats CACert</h1>
+<table><tr valign="top">
+<td>
+
+<p><strong>CACert</strong></p>
+<p>Créer un compte CACert (http://www.cacert.org). Enregistrer son nom de domaine.</p>
+<p>La <strong>clé privée RSA</strong> et le <strong>certificat CSR</strong></p>
+<p>Créer une clé privée RSA (Rivest, Shamir et Adleman) <code>domain.tld.key</code> et un certificat CSR (Certificate Signing Request) <code>domain.tld.csr</code> pour un nom de domaine :</p>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ openssl req -config /etc/ssl/ca/ca.conf <span class="kw">\</span>
+-newkey rsa:2048 -passout file:/etc/ssl/ca/private/passphrase.txt -keyout domain.tld.key <span class="kw">\</span>
+-subj <span class="st">&quot;/C=FR/ST=Gironde/L=Bordeaux/O=NomOrganisme/OU=NomOrganisme/CN=domain.tld/</span>
+<span class="st">emailAddress=webmaster@domain.tld&quot;</span> <span class="kw">\</span>
+-out domain.tld.csr</code></pre>
+<p>Le <strong>certificat X.509</strong></p>
+<p>Rendez-vous ensuite sur votre compte CACert, et cliquez sur <code>Certificat Serveur &gt; Nouveau</code>. Ensuite, copiez-collez le certificat CSR dans la zone de texte.</p>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ openssl req -in domain.tld.csr
+-----BEGIN CERTIFICATE REQUEST-----
+MIICfTCCAeYCAQAwgaoxCzAJBgNVBAYTAkZSMRAwDgYDVQQIEwdHaXJvbmRlMREw
+...
+<span class="ot">IneHrYX1yhkUSrnqVACrf5g=</span>
+-----END CERTIFICATE REQUEST----- </code></pre>
+<p>CACert demande alors de confirmer la demande de certificat pour le domaine.</p>
+<p>Enfin, CACert envoie, sur la page Web et par email, le certificat X.509 :</p>
+<pre class="sourceCode bash"><code class="sourceCode bash">Veuillez trouver ci-dessous votre Certificat de Serveur
+-----BEGIN CERTIFICATE-----
+MIIFwTCCA6mgAwIBAgIDDbyRMA0GCSqGSIb3DQEBBQUAMHkxEDAOBgNVBAoTB1Jv
+...
+RYr+VFb91OHTCAUV0vhKtCG+<span class="ot">Vo8V4hTwvv5w1JoFa2hBMmhq6Q=</span>=
+-----END CERTIFICATE-----</code></pre>
+<p>C’est le certificat <code>domain.tld.crt</code>.</p>
+<p>Vérifier l’information du certificat X.509 :</p>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ openssl req -noout -text -in domain.tld.crt</code></pre>
+<p>Le <strong>certificat PEM</strong> (Privacy Enhanced Mail)</p>
+<p>La dernière étape consiste à créer un fichier d'extension <code>.pem</code>. Le fichier au format <code>pem</code> est pris en charge par les serveurs Web ou mail.</p>
+<p>On récupére la clé privée RSA non protégée :</p>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ openssl rsa -passin file:/etc/ssl/ca/private/passphrase.txt <span class="kw">\</span>
+-in domain.tld.key -out domain.tld.pem
+writing RSA key</code></pre>
+<p>On concatène la clé privée RSA non protégée et le certificat :</p>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">cat</span> domain.tld.pem domain.tld.crt <span class="kw">&gt;</span> domain.tld.pem</code></pre>
+<p><span style="font-size:50%"><strong>Source</strong> : <em>The Open–source PKI Book</em> <a href="http://ospkibook.sourceforge.net/"><code class="url">http://ospkibook.sourceforge.net/</code></a>.</span></p>
+</td><td>
+
+<div class="figure">
+<img src="../images/imgLogoCacert.png" title="Logo CACert" /><p class="caption"></p>
+</div>
+</td>
+</tr></table>
+
+
+
+</div>
+<div class="section slide level1" id="linterface-xca">
+<h1>L'interface XCA</h1>
+<p><strong>XCA</strong> (X509 Certification Authority) est une interface graphique utilisateur pour la création de clés RSA, DSA et ECC, les certificats, les signatures, les listes de révocations.</p>
+<p>Installation de XCA :</p>
+<pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">sudo</span> apt-get <span class="kw">install</span> xca</code></pre>
+<p>L'interface graphique XCA :</p>
+<center>
+<img src="../images/imgUIXca.jpg" title="Interface X509 Certification Authority" />
+</center>
+
+<p><span style="font-size:50%"><strong>Source</strong> : <em>XCA</em> <a href="http://xca.hohnstaedt.de/"><code class="url">http://xca.hohnstaedt.de/</code></a>.</span></p>
+</div>
+<div class="section slide level1" id="section-1">
+
+<div style="margin-top:150px;align:center">
+
+<h4 style="text-align:center">
+Giroll Party 2013
+</h4>
+
+<h2 style="text-align:center;color:black">
+Polymorphisme
+</h2>
+
+<h1 style="text-align:center;color:black">
+Protéger sa vie privée avec le chiffrement
+</h1>
+
+<h3 style="text-align:center">
+<script type="text/javascript">
+<!--
+h='&#112;&#x6f;&#108;&#x79;&#x6d;&#x6f;&#114;&#112;&#104;&#x69;&#x73;&#x6d;&#x65;&#46;&#x6f;&#114;&#x67;';a='&#64;';n='&#x77;&#x65;&#98;&#x6d;&#x61;&#x73;&#116;&#x65;&#114;';e=n+a+h;
+document.write('<a h'+'ref'+'="ma'+'ilto'+':'+e+'">'+'<code>'+e+'</code>'+'<\/'+'a'+'>');
+// -->
+</script><noscript>&#x77;&#x65;&#98;&#x6d;&#x61;&#x73;&#116;&#x65;&#114;&#32;&#x61;&#116;&#32;&#112;&#x6f;&#108;&#x79;&#x6d;&#x6f;&#114;&#112;&#104;&#x69;&#x73;&#x6d;&#x65;&#32;&#100;&#x6f;&#116;&#32;&#x6f;&#114;&#x67;</noscript>
+</h3>
+
+<center>
+<img src="../images/imgLesTroisPetitsSinges.jpg" title="Les trois petits singes" alt="Les trois petits singes" />
+</center>
+
+</div>
+
+
+</div>
+</body>
+</html>
